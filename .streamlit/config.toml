@@ -1,0 +1,14 @@
+# Tema de Euthetos: fondo cálido y claro, un solo color de acento, sin adornos
+[theme]
+base = "light"
+primaryColor = "#1F4E5F"
+backgroundColor = "#F7F6F2"
+secondaryBackgroundColor = "#EFEDE6"
+textColor = "#22272B"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
