@@ -1,0 +1,11 @@
+# En Linux (Streamlit Community Cloud) esta línea trae la versión de PyTorch para CPU, mucho más liviana
+--extra-index-url https://download.pytorch.org/whl/cpu
+streamlit>=1.40
+pandas>=2.2
+numpy>=1.26
+requests>=2.32
+beautifulsoup4>=4.12
+lxml>=5
+pypdf>=5
+torch>=2.4
+sentence-transformers>=3
