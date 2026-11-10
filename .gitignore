@@ -1,0 +1,20 @@
+# Entorno y cachés
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Claves (Euthetos no necesita ninguna, pero nunca se versionan)
+.env
+.streamlit/secrets.toml
+
+# Lectura cruda de Talento Perú: se regenera con ingesta.py
+datos/crudo/
+
+# Currículos reales: nunca se versionan
+cv_privados/
+*.local.*
+
+# Sistema
+.DS_Store
+Thumbs.db
