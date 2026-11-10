@@ -1,7 +1,8 @@
 # En Linux (Streamlit Community Cloud) esta línea trae la versión de PyTorch para CPU, mucho más liviana
 --extra-index-url https://download.pytorch.org/whl/cpu
-streamlit>=1.40
+streamlit>=1.60          # el tema usa [theme.sidebar] y fuentes de Google Fonts
 pandas>=2.2
+plotly>=5.24
 numpy>=1.26
 requests>=2.32
 beautifulsoup4>=4.12

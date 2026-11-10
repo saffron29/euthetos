@@ -1,11 +1,23 @@
-# Tema de Euthetos: fondo cálido y claro, un solo color de acento, sin adornos
+# Tema de Euthetos: azul marino con acento dorado (inspirado en el portafolio del autor)
 [theme]
 base = "light"
-primaryColor = "#1F4E5F"
-backgroundColor = "#F7F6F2"
-secondaryBackgroundColor = "#EFEDE6"
-textColor = "#22272B"
-font = "sans serif"
+primaryColor = "#1F4E8C"
+backgroundColor = "#F4F6FA"
+secondaryBackgroundColor = "#E9EEF6"
+textColor = "#1B2433"
+borderColor = "#D5DEEA"
+linkColor = "#1F4E8C"
+baseRadius = "10px"
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "Montserrat:https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap"
+dataframeHeaderBackgroundColor = "#EAF0F8"
+
+[theme.sidebar]
+backgroundColor = "#13284A"
+secondaryBackgroundColor = "#1F3D6E"
+textColor = "#EAF0F8"
+primaryColor = "#E9B44C"
+borderColor = "#2E4C7C"
 
 [client]
 toolbarMode = "minimal"
