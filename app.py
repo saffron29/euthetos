@@ -474,7 +474,8 @@ def tarjeta(oferta):
                                 # algunas entidades llenan la sección con guiones: se omite
                                 if isinstance(oferta[campo], str) and re.search(r"[A-Za-zÁÉÍÓÚÑáéíóúñ]", oferta[campo]))
                         + f'<p class="eu-nota">Convocatoria {html.escape(str(oferta["numero_convocatoria"]))} · '
-                          f'Aviso N.° {html.escape(str(oferta["id"]))} · {oferta["vacantes"]} vacante(s) · '
+                        + (f'Aviso N.° {oferta["n_aviso"]} · ' if isinstance(oferta["n_aviso"], str) else "")
+                        + f'{oferta["vacantes"]} vacante(s) · '
                           f'Publicada del {pd.Timestamp(oferta["fecha_inicio"]):%d/%m/%Y} al '
                           f'{pd.Timestamp(oferta["fecha_fin"]):%d/%m/%Y}. '
                           "El texto se muestra en minúsculas para facilitar la lectura.</p>", unsafe_allow_html=True)
@@ -517,7 +518,7 @@ with pestana_roja:
 descarga = posibles.sort_values(["menciona_carrera", "afinidad"], ascending=False)
 st.download_button("Descargar mis convocatorias (CSV)",
                    descarga[["color", "titulo", "institucion", "ubicacion", "regimen", "remuneracion", "fecha_fin",
-                             "formacion", "experiencia", "numero_convocatoria", "id", "enlace_bases"]]
+                             "formacion", "experiencia", "numero_convocatoria", "n_aviso", "enlace_bases"]]
                    .to_csv(index=False).encode("utf-8-sig"),
                    file_name="mis_convocatorias_euthetos.csv", mime="text/csv", type="primary")
 

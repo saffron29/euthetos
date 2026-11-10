@@ -8,7 +8,7 @@ mediante un lector de requisitos que compara su currículo con todas las ofertas
 | | |
 |---|---|
 | **Demo** | <!-- REVISAR R4: URL pública de Streamlit Community Cloud --> *pendiente de despliegue*; por ahora corre en local (ver [§6](#6-demo)) |
-| **Datos** | 3,819 ofertas vigentes de Talento Perú (SERVIR), leídas el 10 de noviembre de 2026 |
+| **Datos** | 3,938 ofertas vigentes de Talento Perú (SERVIR), leídas el 10 de noviembre de 2026 |
 | **Costo por consulta** | S/ 0 en tokens: el modelo de lenguaje es abierto y corre dentro de la aplicación |
 | **Proyecto** | Proyecto final del curso de Python Intermedio, Diplomatura de Ciencia de Datos para las Ciencias Sociales y la Gestión Pública (Q-Lab PUCP) |
 
@@ -37,7 +37,7 @@ un preparador de postulaciones, de los cuales se tomó la experiencia con el por
 ## 3. Problema
 
 **Quién lo sufre.** Toda persona que busca trabajo en el Estado peruano. Al 10 de noviembre de 2026, Talento Perú
-publicaba 3,819 ofertas vigentes de 348 entidades en los 25 departamentos, de las cuales el 41% correspondía a Lima.
+publicaba 3,938 ofertas vigentes de 351 entidades en los 25 departamentos, de las cuales el 41% correspondía a Lima.
 
 **Cuánto le cuesta.** El portal muestra diez ofertas por página y su buscador compara palabras sueltas del perfil,
 de manera que, para saber si se cumple una oferta, debe abrirse su detalle y leer cuatro secciones (formación,
@@ -192,7 +192,7 @@ autor y de revisiones manuales en cada etapa:
 
 ## Limitaciones
 
-- Las reglas no leen el grado exigido en el 8% de las ofertas ni la experiencia en el 11%; esas ofertas pasan a
+- Las reglas no leen el grado exigido en el 8% de las ofertas ni la experiencia en el 10%; esas ofertas pasan a
   «conviene revisar», nunca a «cumples».
 - Euthetos no sabe si una carrera es «afín» a otra ni evalúa la especialización ni los conocimientos: lo indica para
   que la persona lo lea.

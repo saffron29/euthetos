@@ -231,7 +231,8 @@ def leer_detalle(sesion, campos, boton_detalle):
         enlaces = re.findall(r"https?://\S+", detalle_texto)
     enlaces = [e if e.startswith("http") else "https://" + e for e in enlaces]
 
-    numero = re.search(r"N°\s*(\d{5,})", soup.get_text(" "))
+    # El N.° de aviso tiene 6 cifras; con 5 se confundía con leyes citadas en el texto («Ley N° 23536»)
+    numero = re.search(r"N°\s*(\d{6,})", soup.get_text(" "))
     return {
         "n_aviso": numero.group(1) if numero else None,
         "formacion": _valor(secciones, "formacion"),
@@ -336,7 +337,7 @@ def recorrer(max_paginas=None):
 # ---------------------------------------------------------------------------
 # De lo leído al CSV que usa la aplicación
 # ---------------------------------------------------------------------------
-COLUMNAS = ["id", "titulo", "institucion", "ubicacion", "numero_convocatoria", "vacantes",
+COLUMNAS = ["id", "n_aviso", "titulo", "institucion", "ubicacion", "numero_convocatoria", "vacantes",
             "remuneracion", "remuneracion_soles", "fecha_inicio", "fecha_fin",
             "formacion", "experiencia", "especializacion", "conocimientos",
             "detalle", "enlace_bases", "leido"]
@@ -348,7 +349,9 @@ def exportar_csv(hoy=None):
     with open(RUTA_CRUDO, encoding="utf-8") as archivo:
         avisos = [json.loads(linea) for linea in archivo if linea.strip()]
     df = pd.DataFrame(avisos).drop_duplicates("clave", keep="last")
-    df["id"] = df["n_aviso"].fillna(df["clave"])
+    # El identificador es la clave de la tarjeta: el N.° de aviso se repite en algunas ofertas
+    df["id"] = df["clave"]
+    df["n_aviso"] = df["n_aviso"].where(df["n_aviso"].fillna("").str.len() >= 6)
     df["remuneracion_soles"] = df["remuneracion"].map(monto_en_soles)
     vigentes = df[df["fecha_fin"].fillna("9999") >= hoy]
     vigentes = vigentes.sort_values(["fecha_fin", "institucion", "titulo"])[COLUMNAS]
