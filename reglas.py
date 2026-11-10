@@ -236,6 +236,10 @@ def regimen(numero_convocatoria):
 # 5. El veredicto
 # ---------------------------------------------------------------------------
 def _anios(valor):
+    """1.5 -> '1.5 años'; 0.5 -> '6 meses' (menos de un año se dice en meses)."""
+    if 0 < valor < 1:
+        meses = round(valor * 12)
+        return f"{meses} mes" + ("" if meses == 1 else "es")
     return f"{valor:g} año" + ("" if valor == 1 else "s")
 
 
