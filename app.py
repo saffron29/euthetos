@@ -100,6 +100,13 @@ st.markdown("**¿A qué convocatorias del Estado puedes postular?** Escribe tu c
 # ---------------------------------------------------------------------------
 st.subheader("1 · Tu carrera y tu CV")
 columna_carrera, columna_cv, columna_ejemplo = st.columns([2, 3, 2])
+# Un enlace como .../?demo=enfermeria abre la aplicación con ese CV ficticio ya cargado
+demo = st.query_params.get("demo")
+if demo and "ejemplo" not in st.session_state:
+    coincidencias = [nombre for nombre, (archivo_cv, _) in CV_DE_EJEMPLO.items() if archivo_cv.startswith(demo)]
+    if coincidencias:
+        st.session_state["ejemplo"] = coincidencias[0]
+
 with columna_ejemplo:
     ejemplo = st.selectbox("¿No tienes tu CV a la mano? Prueba con uno ficticio",
                            ["—"] + list(CV_DE_EJEMPLO), key="ejemplo")
