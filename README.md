@@ -7,7 +7,7 @@ mediante un lector de requisitos que compara su currículo con todas las ofertas
 
 | | |
 |---|---|
-| **Demo** | <!-- REVISAR R4: URL pública de Streamlit Community Cloud --> *pendiente de despliegue*; por ahora corre en local (ver [§6](#6-demo)) |
+| **Demo** | **[euthetos.streamlit.app](https://euthetos.streamlit.app/)** · con un currículo ficticio: [enfermería](https://euthetos.streamlit.app/?demo=enfermeria), [ingeniería civil](https://euthetos.streamlit.app/?demo=ingenieria_civil), [derecho](https://euthetos.streamlit.app/?demo=derecho) |
 | **Datos** | 3,938 ofertas vigentes de Talento Perú (SERVIR), leídas el 10 de noviembre de 2026 |
 | **Costo por consulta** | S/ 0 en tokens: el modelo de lenguaje es abierto y corre dentro de la aplicación |
 | **Proyecto** | Proyecto final del curso de Python Intermedio, Diplomatura de Ciencia de Datos para las Ciencias Sociales y la Gestión Pública (Q-Lab PUCP) |
@@ -87,7 +87,8 @@ el texto original.
 
 ## 6. Demo
 
-**URL pública:** <!-- REVISAR R4 --> *pendiente de despliegue.*
+**URL pública:** https://euthetos.streamlit.app/ (en Streamlit Community Cloud). Si la aplicación estuvo
+inactiva, la primera visita tarda alrededor de un minuto en despertarla y en cargar el modelo de lenguaje.
 
 **Correrlo en local:**
 
