@@ -234,20 +234,33 @@ def _anios(valor):
     return f"{valor:g} año" + ("" if valor == 1 else "s")
 
 
-def veredicto(perfil, oferta):
+def requisitos(oferta):
+    """Lo que pide una oferta, leído una sola vez: grado, posgrado, colegiatura, experiencia y régimen."""
+    pedido = nivel_exigido(oferta.get("formacion"))
+    exp = experiencia_exigida(oferta.get("experiencia"))
+    return {"nivel_pedido": pedido["nivel"], "pide_posgrado": pedido["pide_posgrado"],
+            "pide_colegiatura": pedido["pide_colegiatura"],
+            "exp_general_pedida": exp["general"], "exp_especifica_pedida": exp["especifica"],
+            "regimen": regimen(oferta.get("numero_convocatoria"))}
+
+
+def veredicto(perfil, oferta, pedido=None):
     """Compara un perfil con una oferta.
 
     perfil: {"carrera", "nivel" (posición en NIVELES), "colegiado", "exp_general", "exp_especifica"}
     oferta: fila con "formacion", "experiencia" y "numero_convocatoria"
-    Cada motivo es (estado, texto) con estado "ok", "revisar" o "falta".
+    pedido: resultado de requisitos(oferta), si ya se calculó antes
+    Devuelve el color y los motivos; cada motivo es (estado, texto), con estado
+    "ok", "revisar" o "falta".
     """
+    pedido = pedido or requisitos(oferta)
+    nivel = pedido["nivel_pedido"]
+    # En una tabla de pandas el dato que falta llega como NaN y los enteros como decimales
+    nivel = None if nivel is None or nivel != nivel else int(nivel)
     motivos = []
-    pedido = nivel_exigido(oferta.get("formacion"))
-    exp = experiencia_exigida(oferta.get("experiencia"))
-    es_practica = regimen(oferta.get("numero_convocatoria")).startswith("Prácticas")
 
     # Carrera
-    carrera = carrera_mencionada(perfil["carrera"], oferta.get("formacion"), pedido["nivel"])
+    carrera = carrera_mencionada(perfil["carrera"], oferta.get("formacion"), nivel)
     if carrera == "si":
         motivos.append(("ok", f"La formación pedida menciona tu carrera ({perfil['carrera']})."))
     elif carrera == "sin_carrera":
@@ -260,31 +273,29 @@ def veredicto(perfil, oferta):
         motivos.append(("revisar", "La oferta no publica la formación pedida."))
 
     # Grado
-    if pedido["nivel"] is None:
+    if nivel is None:
         motivos.append(("revisar", "No se pudo leer el grado que pide: revisa el texto."))
-    elif es_practica and perfil["nivel"] >= BACHILLER:
+    elif pedido["regimen"].startswith("Prácticas") and perfil["nivel"] >= BACHILLER:
         motivos.append(("revisar", "Es una práctica: suele ser solo para estudiantes o egresados recientes."))
-    elif perfil["nivel"] >= pedido["nivel"]:
-        motivos.append(("ok", f"Pide como mínimo «{NIVELES[pedido['nivel']]}» y tú indicaste «{NIVELES[perfil['nivel']]}»."))
     else:
-        motivos.append(("falta", f"Pide como mínimo «{NIVELES[pedido['nivel']]}» y tú indicaste «{NIVELES[perfil['nivel']]}»."))
-    if pedido["pide_posgrado"] and perfil["nivel"] < MAESTRIA and (pedido["nivel"] or 0) < MAESTRIA:
+        estado = "ok" if perfil["nivel"] >= nivel else "falta"
+        motivos.append((estado, f"Pide como mínimo «{NIVELES[nivel]}» y tú indicaste «{NIVELES[perfil['nivel']]}»."))
+    if pedido["pide_posgrado"] and perfil["nivel"] < MAESTRIA and (nivel or 0) < MAESTRIA:
         motivos.append(("revisar", "Menciona estudios de posgrado: revisa si son obligatorios."))
     if pedido["pide_colegiatura"] and not perfil.get("colegiado"):
         motivos.append(("revisar", "Menciona colegiatura o habilitación profesional."))
 
     # Experiencia
-    for tipo, clave, nombre in (("general", "exp_general", "general"), ("especifica", "exp_especifica", "específica")):
-        if exp[tipo] is None:
+    for clave_pedida, clave_perfil, nombre in (("exp_general_pedida", "exp_general", "general"),
+                                               ("exp_especifica_pedida", "exp_especifica", "específica")):
+        pide, tiene = pedido[clave_pedida], perfil[clave_perfil]
+        if pide is None or pide != pide:                       # sin dato (None o NaN)
             continue
-        if perfil[clave] >= exp[tipo]:
-            motivos.append(("ok", f"Pide {_anios(exp[tipo])} de experiencia {nombre} y tú indicaste {_anios(perfil[clave])}."))
-        else:
-            motivos.append(("falta", f"Pide {_anios(exp[tipo])} de experiencia {nombre} y tú indicaste {_anios(perfil[clave])}."))
-    if exp["general"] is None and exp["especifica"] is None:
+        estado = "ok" if tiene >= pide else "falta"
+        motivos.append((estado, f"Pide {_anios(pide)} de experiencia {nombre} y tú indicaste {_anios(tiene)}."))
+    if not any("experiencia" in texto for _, texto in motivos):
         motivos.append(("revisar", "No se pudo leer cuánta experiencia pide: revisa el texto."))
 
     estados = {estado for estado, _ in motivos}
     color = "rojo" if "falta" in estados else "amarillo" if "revisar" in estados else "verde"
-    return {"color": color, "motivos": motivos,
-            "nivel_pedido": pedido["nivel"], "exp_general": exp["general"], "exp_especifica": exp["especifica"]}
+    return {"color": color, "motivos": motivos, "carrera": carrera}
