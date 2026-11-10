@@ -8,6 +8,7 @@ textColor = "#1B2433"
 borderColor = "#D5DEEA"
 linkColor = "#1F4E8C"
 baseRadius = "10px"
+baseFontSize = 15
 font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
 headingFont = "Montserrat:https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap"
 dataframeHeaderBackgroundColor = "#EAF0F8"

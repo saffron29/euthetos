@@ -53,18 +53,18 @@ st.markdown("""
 .eu-hero {background: linear-gradient(135deg, #0F2240 0%, #1D3A68 55%, #1F4E8C 100%); border-radius: 16px;
           padding: 1.9rem 2.2rem 1.6rem; color: #DBE5F3; position: relative; overflow: hidden; margin-bottom: 1.4rem;}
 .eu-hero::after {content: "εὔθετος"; position: absolute; right: 1.6rem; top: .4rem; font-family: "Montserrat";
-                 font-weight: 800; font-size: 5.2rem; color: rgba(255,255,255,.06); letter-spacing: -.02em;}
+                 font-weight: 800; font-size: 4.4rem; color: rgba(255,255,255,.06); letter-spacing: -.02em;}
 .eu-eyebrow {font-size: .74rem !important; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
              color: #E9B44C; margin: 0 0 .35rem;}
-.eu-marca {font-family: "Montserrat", sans-serif; font-size: 2.6rem !important; font-weight: 800; color: #FFFFFF;
+.eu-marca {font-family: "Montserrat", sans-serif; font-size: 2.2rem !important; font-weight: 800; color: #FFFFFF;
            letter-spacing: -.02em; line-height: 1.05; margin: 0;}
-.eu-lema {font-size: 1.12rem !important; color: #DBE5F3; margin: .45rem 0 1.2rem; max-width: 40rem; line-height: 1.5;}
+.eu-lema {font-size: 1rem !important; color: #DBE5F3; margin: .45rem 0 1.2rem; max-width: 40rem; line-height: 1.5;}
 .eu-lema b {color: #FFFFFF;}
 .eu-cifras {display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem;}
 .eu-cifra {background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 10px;
            padding: .65rem .9rem;}
-.eu-cifra b {display: block; font-family: "Montserrat"; font-size: 1.45rem; font-weight: 700; color: #FFFFFF;}
-.eu-cifra span {font-size: .8rem; color: #A9C6EE;}
+.eu-cifra b {display: block; font-family: "Montserrat"; font-size: 1.3rem; font-weight: 700; color: #FFFFFF;}
+.eu-cifra span {font-size: .76rem; color: #A9C6EE;}
 
 /* Pasos de la portada */
 .eu-pasos {display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: .4rem 0 1.4rem;}
@@ -72,22 +72,22 @@ st.markdown("""
           padding: 1.1rem 1.2rem 1.2rem; box-shadow: 0 1px 3px rgba(15,34,64,.06);}
 .eu-num {display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem;
          border-radius: 50%; background: var(--c); color: #FFFFFF; font-family: "Montserrat"; font-weight: 700;}
-.eu-paso b {display: block; margin: .6rem 0 .3rem; font-family: "Montserrat"; color: #13284A; font-size: 1.02rem;}
-.eu-paso span {font-size: .93rem; color: #4A5568; line-height: 1.5;}
-.eu-paso span.eu-num {color: #FFFFFF; font-size: .95rem; line-height: 1;}
+.eu-paso b {display: block; margin: .6rem 0 .3rem; font-family: "Montserrat"; color: #13284A; font-size: .95rem;}
+.eu-paso span {font-size: .88rem; color: #4A5568; line-height: 1.5;}
+.eu-paso span.eu-num {color: #FFFFFF; font-size: .9rem; line-height: 1;}
 
 /* Títulos de sección */
-.eu-seccion {font-family: "Montserrat", sans-serif; font-size: 1.18rem !important; font-weight: 700; color: #13284A;
+.eu-seccion {font-family: "Montserrat", sans-serif; font-size: 1.05rem !important; font-weight: 700; color: #13284A;
              margin: 1.4rem 0 .2rem; display: flex; align-items: center; gap: .55rem;}
 .eu-seccion::before {content: ""; width: .32rem; height: 1.15rem; border-radius: 3px; background: #E9B44C;}
-.eu-nota {font-size: .87rem !important; color: #5B6678; line-height: 1.5;}
+.eu-nota {font-size: .82rem !important; color: #5B6678; line-height: 1.5;}
 
 /* Resumen de resultados */
 .eu-resumen {display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin: .6rem 0 1rem;}
 .eu-dato {background: var(--f); border: 1px solid var(--b); border-radius: 12px; padding: .85rem 1rem;}
-.eu-dato b {display: block; font-family: "Montserrat"; font-size: 1.9rem; font-weight: 700; color: var(--t);
+.eu-dato b {display: block; font-family: "Montserrat"; font-size: 1.6rem; font-weight: 700; color: var(--t);
             line-height: 1.1;}
-.eu-dato span {font-size: .86rem; color: #36404F; font-weight: 500;}
+.eu-dato span {font-size: .82rem; color: #36404F; font-weight: 500;}
 
 /* Pestañas como botones */
 .stTabs [role="tablist"] {gap: .5rem; border-bottom: none; flex-wrap: wrap;}
@@ -105,7 +105,12 @@ st.markdown("""
 [data-testid="stFileUploaderDropzoneInstructions"] span {font-size: 0 !important;}
 [data-testid="stFileUploaderDropzoneInstructions"] span::after {content: "Hasta 200 MB · PDF, DOCX o TXT";
   font-size: .78rem;}
-[data-testid="stSidebar"] {min-width: 340px !important; width: 340px !important;}
+@media (min-width: 768px) {
+  [data-testid="stSidebar"] {min-width: 330px !important; width: 330px !important; transform: none !important;}
+  [data-testid="stSidebarCollapseButton"], [data-testid="stSidebarResizeHandle"],
+  [data-testid="stExpandSidebarButton"], [data-testid="stSidebarCollapsedControl"] {display: none !important;}
+  [data-testid="stSidebarHeader"] {height: .6rem; min-height: 0; padding: 0;}
+}
 
 /* Tarjetas de oferta */
 [class*="st-key-oferta_"], .st-key-grafico {background: #FFFFFF; box-shadow: 0 1px 3px rgba(15,34,64,.07);}
@@ -113,16 +118,16 @@ st.markdown("""
 [class*="st-key-oferta_"][class*="_amarillo"] {border-left: 5px solid #D4952B !important;}
 [class*="st-key-oferta_"][class*="_rojo"] {border-left: 5px solid #C2493F !important;}
 .eu-cabeza {display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem;}
-.eu-titulo {font-family: "Montserrat", sans-serif; font-size: 1.08rem !important; font-weight: 700; color: #13284A;
+.eu-titulo {font-family: "Montserrat", sans-serif; font-size: .98rem !important; font-weight: 700; color: #13284A;
             margin: 0; line-height: 1.35;}
-.eu-entidad {color: #4A5568; font-size: .92rem; margin: .15rem 0 .6rem;}
-.eu-sello {flex: none; font-size: .74rem; font-weight: 700; border-radius: 999px; padding: .2rem .75rem;
+.eu-entidad {color: #4A5568; font-size: .86rem; margin: .15rem 0 .6rem;}
+.eu-sello {flex: none; font-size: .7rem; font-weight: 700; border-radius: 999px; padding: .2rem .75rem;
            white-space: nowrap;}
 .eu-sello.verde {background: #E3F4EC; color: #17694A;}
 .eu-sello.amarillo {background: #FDF1DC; color: #8A5A00;}
 .eu-sello.rojo {background: #FBE7E4; color: #9C3329;}
 .eu-chips {margin-bottom: .35rem;}
-.eu-chips span {display: inline-block; border-radius: 999px; padding: .14rem .7rem; font-size: .8rem;
+.eu-chips span {display: inline-block; border-radius: 999px; padding: .12rem .65rem; font-size: .76rem;
                 font-weight: 500; margin: 0 .35rem .35rem 0;}
 .eu-chips .sueldo {background: #E3F4EC; color: #17694A;}
 .eu-chips .cierre {background: #EAF0F8; color: #1F4E8C;}
@@ -130,22 +135,22 @@ st.markdown("""
 .eu-chips .lugar {background: #EAF0F8; color: #1F4E8C;}
 .eu-chips .regimen {background: #EEEAFB; color: #5B45B0;}
 .eu-chips .afinidad {background: #13284A; color: #FFFFFF;}
-.eu-motivo {display: flex; gap: .7rem; align-items: baseline; font-size: .93rem; color: #2E353A; margin: .3rem 0;}
-.eu-estado {flex: none; width: 4.7rem; text-align: center; font-size: .7rem; font-weight: 700;
+.eu-motivo {display: flex; gap: .7rem; align-items: baseline; font-size: .88rem; color: #2E353A; margin: .3rem 0;}
+.eu-estado {flex: none; width: 4.7rem; text-align: center; font-size: .66rem; font-weight: 700;
             letter-spacing: .04em; text-transform: uppercase; border-radius: 5px; padding: .14rem 0;}
 .eu-estado.ok {background: #E3F4EC; color: #17694A;}
 .eu-estado.revisar {background: #FDF1DC; color: #8A5A00;}
 .eu-estado.falta {background: #FBE7E4; color: #9C3329;}
-.eu-literal {font-size: .91rem; color: #36404F; line-height: 1.6; margin: 0 0 .6rem;}
+.eu-literal {font-size: .86rem; color: #36404F; line-height: 1.6; margin: 0 0 .6rem;}
 .eu-literal b {color: #13284A;}
 
 /* Barra lateral */
-.eu-lateral {font-family: "Montserrat"; font-weight: 700; font-size: 1.2rem !important; color: #FFFFFF; margin: 0;}
-.eu-lateral-nota {font-size: .82rem !important; color: #A9C6EE; margin: .15rem 0 .9rem; line-height: 1.45;}
+.eu-lateral {font-family: "Montserrat"; font-weight: 700; font-size: 1.1rem !important; color: #FFFFFF; margin: 0;}
+.eu-lateral-nota {font-size: .78rem !important; color: #A9C6EE; margin: .15rem 0 .9rem; line-height: 1.45;}
 
 /* Pie */
 .eu-pie {background: #13284A; color: #C9D6EA; border-radius: 14px; padding: 1.1rem 1.4rem; margin-top: 2rem;
-         font-size: .86rem; line-height: 1.55;}
+         font-size: .82rem; line-height: 1.55;}
 .eu-pie b {color: #E9B44C;}
 
 @media (max-width: 760px) {
@@ -421,13 +426,13 @@ def grafico_departamentos(posibles):
     figura = go.Figure(go.Bar(
         x=conteo.values, y=conteo.index, orientation="h", marker=dict(color=AZUL, cornerradius=4),
         width=0.62, text=[miles(v) for v in conteo.values], textposition="outside", cliponaxis=False,
-        textfont=dict(color="#36404F", size=12),
+        textfont=dict(color="#36404F", size=11),
         hovertemplate="<b>%{y}</b><br>%{x:,} ofertas en las que cumples o conviene revisar<extra></extra>"))
     figura.update_layout(
-        height=max(180, 34 * len(conteo) + 40), margin=dict(l=0, r=36, t=6, b=6),
+        height=max(170, 30 * len(conteo) + 30), margin=dict(l=0, r=36, t=6, b=6),
         paper_bgcolor="#FFFFFF", plot_bgcolor="#FFFFFF", font=dict(family="Inter, sans-serif", color="#36404F"),
         xaxis=dict(showgrid=True, gridcolor="#EEF2F7", zeroline=False, showticklabels=False),
-        yaxis=dict(showgrid=False, tickfont=dict(size=12.5, color="#1B2433")),
+        yaxis=dict(showgrid=False, tickfont=dict(size=11.5, color="#1B2433")),
         hoverlabel=dict(bgcolor="#13284A", font_color="#FFFFFF", bordercolor="#13284A"), bargap=0.35)
     return figura
 
