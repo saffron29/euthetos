@@ -5,92 +5,133 @@
 **Hacemos que cualquier profesional sepa en un minuto a qué convocatorias del Estado peruano puede postular,
 mediante un lector de requisitos que compara su currículo con todas las ofertas vigentes de Talento Perú.**
 
-| | |
-|---|---|
-| **Demo** | **[euthetos.streamlit.app](https://euthetos.streamlit.app/)** · con un currículo ficticio: [enfermería](https://euthetos.streamlit.app/?demo=enfermeria), [ingeniería civil](https://euthetos.streamlit.app/?demo=ingenieria_civil), [derecho](https://euthetos.streamlit.app/?demo=derecho) |
-| **Datos** | 3,938 ofertas vigentes de Talento Perú (SERVIR), leídas el 10 de noviembre de 2026 |
-| **Costo por consulta** | S/ 0 en tokens: el modelo de lenguaje es abierto y corre dentro de la aplicación |
-| **Proyecto** | Proyecto final del curso de Python Intermedio, Diplomatura de Ciencia de Datos para las Ciencias Sociales y la Gestión Pública (Q-Lab PUCP) |
+### [Abrir Euthetos → euthetos.streamlit.app](https://euthetos.streamlit.app/)
+
+Para probarla sin un currículo propio: [enfermera](https://euthetos.streamlit.app/?ejemplo=enfermeria) ·
+[ingeniero civil](https://euthetos.streamlit.app/?ejemplo=ingenieria_civil) ·
+[abogada](https://euthetos.streamlit.app/?ejemplo=derecho) (currículos ficticios).
+
+| 3,938 | 351 | S/ 0 |
+|:---:|:---:|:---:|
+| ofertas laborales vigentes del Estado, de todos los regímenes | entidades públicas en los 25 departamentos | de costo por consulta: el modelo de lenguaje es abierto y corre dentro de la aplicación |
 
 ![Portada de Euthetos](docs/capturas/1_portada.png)
 
+## Cómo funciona
+
+| 1. Escribe tu carrera y adjunta tu currículo | 2. Confirma tu experiencia | 3. Revisa tus convocatorias |
+|---|---|---|
+| Cualquier carrera, universitaria o técnica. El currículo puede estar en PDF, Word o texto, y no se guarda. | Euthetos muestra cada periodo de trabajo que leyó del currículo; se desmarcan los que no pueden acreditarse. | Las ofertas se separan en **cumples lo medible**, **conviene revisar** y **te falta un requisito**, con el motivo y el texto literal de cada requisito. |
+| ![Portada](docs/capturas/1_portada.png) | ![Experiencia y resultados](docs/capturas/2_resultados.png) | ![Detalle de una oferta](docs/capturas/3_oferta.png) |
+
 ---
 
-## 1. One-liner
+## Índice
+
+1. [Propuesta en una frase](#1-propuesta-en-una-frase-one-liner)
+2. [Fundador](#2-fundador-founder)
+3. [Problema](#3-problema)
+4. [Solución e idea clave](#4-solución-e-idea-clave-insight)
+5. [Por qué ahora](#5-por-qué-ahora-why-now)
+6. [Demostración](#6-demostración)
+7. [Modelo de negocio](#7-modelo-de-negocio)
+8. [Herramientas del curso](#8-herramientas-del-curso)
+9. [Qué hizo el agente](#9-qué-hizo-el-agente)
+10. [Competencia, primeros usuarios, hoja de ruta y riesgos](#10-competencia-primeros-usuarios-hoja-de-ruta-y-riesgos)
+
+---
+
+## 1. Propuesta en una frase (*one-liner*)
 
 Hacemos que **cualquier profesional, de cualquier carrera**, sepa en un minuto **a qué convocatorias del Estado
 peruano puede postular**, mediante un lector que compara su carrera, su grado y sus años de experiencia con los
-requisitos publicados en **todas las ofertas vigentes de Talento Perú** (CAS, D. Leg. 276, D. Leg. 728, Ley 30057 y
-demás regímenes), mostrando siempre el texto literal de cada requisito.
+requisitos de **todas las ofertas vigentes de Talento Perú**, desde el régimen CAS hasta los decretos legislativos
+276 y 728 y la Ley del Servicio Civil.
 
-## 2. Founder
+## 2. Fundador (*founder*)
 
-<!-- REVISAR R5: este párrafo lo confirma o reescribe Frank -->
 Frank Pinares Gutiérrez es licenciado en Ciencia Política y Gobierno por la Pontificia Universidad Católica del
 Perú (2026) y cursa la Diplomatura de Especialización en Ciencia de Datos para las Ciencias Sociales y la Gestión
-Pública (Q-Lab PUCP). Durante 2026 postuló a prácticas y puestos en siete entidades públicas, de modo que conoce de
-primera mano el problema que el presente proyecto busca resolver: revisar convocatoria por convocatoria si se
-cumplen los requisitos, para descubrir muchas veces, al final de la lectura, que alguno de ellos no se cumple. Y es
-que, antes de Euthetos, el autor ya había construido para su propia búsqueda un buscador diario de convocatorias y
-un preparador de postulaciones, de los cuales se tomó la experiencia con el portal de Talento Perú.
+Pública (Q-Lab PUCP).
+
+Durante 2026 postuló a prácticas y puestos en siete entidades públicas, de modo que conoce de primera mano el
+problema: revisar convocatoria por convocatoria si se cumplen los requisitos, para descubrir muchas veces, al
+final de la lectura, que alguno no se cumple. Antes de Euthetos, el autor ya había construido para su propia
+búsqueda un buscador diario de convocatorias y un preparador de postulaciones, y de ellos proviene la experiencia
+con el portal de Talento Perú en la que se apoya el presente proyecto.
 
 ## 3. Problema
 
 **Quién lo sufre.** Toda persona que busca trabajo en el Estado peruano. Al 10 de noviembre de 2026, Talento Perú
-publicaba 3,938 ofertas vigentes de 351 entidades en los 25 departamentos, de las cuales el 41% correspondía a Lima.
+publicaba 3,938 ofertas vigentes de 351 entidades; el 41% correspondía a Lima.
 
-**Cuánto le cuesta.** El portal muestra diez ofertas por página y su buscador compara palabras sueltas del perfil,
-de manera que, para saber si se cumple una oferta, debe abrirse su detalle y leer cuatro secciones (formación,
-experiencia, especialización y conocimientos). Leer las 428 páginas y todos sus detalles le tomó a un programa,
-con una pausa de dos segundos entre pedido y pedido, unas 2 horas y 45 minutos; para una persona, la misma tarea
-equivaldría a varios días de lectura. Asimismo, buena parte de esa lectura se desperdicia, siendo que la mediana de
-experiencia general exigida es de dos años y solo el 33% de las ofertas pide un año o menos.
+**Cuánto le cuesta.** El portal muestra diez ofertas por página y su buscador encuentra la frase literal que se escribe
+en el perfil, sin decir si se cumple. Por eso, para saber si se cumple una oferta, debe abrirse su detalle y leerse cuatro secciones: formación,
+experiencia, especialización y conocimientos. A un programa, con una pausa de dos segundos entre pedido y pedido,
+leer las 428 páginas y todos sus detalles le tomó unas 2 horas y 45 minutos; para una persona, la misma lectura
+equivaldría a varios días.
 
-**Cómo lo resuelve hoy.** <!-- REVISAR R5: completar con lo que digan las tres conversaciones -->
-*Pendiente: se completará con las notas de las tres conversaciones con usuarios potenciales, que se encuentran en
-[`docs/research/`](docs/research/).*
+Ahora bien, la mayor parte de esa lectura no sirve para nada. Con las reglas de Euthetos se calculó cuántas de las
+3,938 ofertas nombran la carrera de cuatro perfiles de ejemplo y además piden un grado y una experiencia que esos
+perfiles cumplen:
 
-| Conversación | Perfil | Notas |
+| Perfil de ejemplo | Ofertas que le sirven en lo medible | Proporción |
+|---|---:|---:|
+| Abogada titulada y colegiada, con 6.5 años de experiencia | 727 | 18.5% |
+| Enfermera licenciada y colegiada, con 4.5 años | 286 | 7.3% |
+| Ingeniero civil bachiller, con 5.5 años | 22 | 0.6% |
+| Politólogo recién titulado, con 6 meses | 0 | 0.0% |
+
+Es decir, una persona que revisa las ofertas a mano lee entre 5 y 179 avisos por cada uno que le sirve, y quien
+recién empieza su carrera puede leerlos todos sin encontrar ninguno. Asimismo, la mediana de experiencia general
+exigida es de dos años, y solo el 33% de las ofertas pide un año o menos.
+
+**Cómo lo resuelve hoy.** Las notas de las conversaciones con usuarios potenciales se encuentran en
+[`docs/research/`](docs/research/), junto con la guía de preguntas utilizada.
+
+<!-- Tabla de conversaciones: se completa con las notas de docs/research/conversacion_1..3.md -->
+| Conversación | Perfil | Qué dijo |
 |---|---|---|
-| 1 | *pendiente* | [`conversacion_1.md`](docs/research/conversacion_1.md) |
-| 2 | *pendiente* | [`conversacion_2.md`](docs/research/conversacion_2.md) |
-| 3 | *pendiente* | [`conversacion_3.md`](docs/research/conversacion_3.md) |
+| 1 | *en curso* | *pendiente* |
+| 2 | *en curso* | *pendiente* |
+| 3 | *en curso* | *pendiente* |
 
-La guía usada para las conversaciones está en [`docs/research/guia_de_conversacion.md`](docs/research/guia_de_conversacion.md).
+## 4. Solución e idea clave (*insight*)
 
-## 4. Solución e insight
+**Solución.** Euthetos lee del currículo el grado más alto y los periodos de trabajo, y muestra cada periodo junto
+con la línea de la que salió, para que la persona desmarque los que no puede acreditar. Con ese perfil confirmado,
+compara cada oferta vigente y la ubica en uno de tres grupos:
 
-**Solución.** La persona escribe su carrera y adjunta su currículo en PDF, Word o texto. Euthetos lee del
-currículo el grado más alto y los periodos de trabajo, y le muestra a la persona cada periodo junto con la línea
-de la que salió, para que desmarque los que no puede acreditar. Con ese perfil confirmado, compara cada una de las
-ofertas vigentes y las separa en tres grupos: **cumples lo medible**, **conviene revisar** (carreras afines,
-colegiatura, posgrado o un texto poco claro) y **te falta un requisito**. Dentro de cada grupo, las ofertas se
-ordenan primero por si nombran la carrera de la persona y luego por su parecido con el currículo. Cada oferta
-muestra por qué quedó en su grupo, junto con el texto literal publicado por la entidad y el enlace a sus bases.
+- **Cumples lo medible:** la oferta nombra la carrera y se cumplen el grado y los años de experiencia.
+- **Conviene revisar:** nada descarta a la persona, pero hay algo que debe leer ella misma (carreras afines,
+  colegiatura, posgrado o un texto poco claro).
+- **Te falta un requisito:** sirve para saber qué separa a la persona de cada puesto.
 
-**Insight.** Talento Perú ya publica los requisitos separados en secciones, de manera que lo medible (carrera,
-grado y años de experiencia) puede leerse con reglas transparentes y comprobables, sin necesidad de un modelo de
-lenguaje de pago que «decida» si alguien es apto. Así, la inteligencia artificial se reserva para lo que las
-reglas no resuelven, es decir, ordenar miles de ofertas según su parecido con un currículo, y para ello basta un
-modelo abierto y pequeño que corre gratis dentro de la aplicación. De esta forma, el costo por usuario es
-prácticamente nulo, el currículo no se envía a ningún servicio externo y cada veredicto puede verificarse contra
-el texto original.
+Dentro de cada grupo, primero aparecen las ofertas que nombran la carrera y luego las más parecidas al currículo.
+Cada oferta muestra por qué quedó en su grupo, el texto literal publicado por la entidad y el enlace a sus bases.
 
-## 5. Why now
+**Idea clave.** Talento Perú ya publica los requisitos separados en secciones, de manera que lo medible puede leerse
+con reglas transparentes y comprobables, sin un modelo de lenguaje de pago que «decida» si alguien es apto. Así, la
+inteligencia artificial se reserva para lo que las reglas no resuelven, es decir, ordenar miles de ofertas según su
+parecido con un currículo; y para ello basta un modelo abierto y pequeño. De esta forma, el costo por usuario es
+prácticamente nulo, el currículo no se envía a ningún servicio externo y cada resultado puede verificarse contra el
+texto original.
 
-- **Modelos abiertos pequeños y multilingües.** `intfloat/multilingual-e5-small` tiene 118 millones de parámetros,
-  entiende el español y convierte un currículo en un vector en 0.18 segundos en la CPU de una laptop, sin clave ni
-  costo por consulta.
-- **Despliegue gratuito.** Streamlit Community Cloud permite publicar la aplicación sin servidor propio.
-- **Agentes de programación.** El flujo completo, desde la lectura del portal hasta la aplicación desplegable, se
+## 5. Por qué ahora (*why now*)
+
+- **Modelos abiertos, pequeños y en español.** `intfloat/multilingual-e5-small` tiene 118 millones de parámetros,
+  entiende el español y convierte un currículo en un vector en 0.18 segundos en el procesador de una laptop, sin
+  clave ni costo por consulta.
+- **Publicación gratuita.** Streamlit Community Cloud permite publicar la aplicación sin un servidor propio.
+- **Agentes de programación.** El flujo completo, desde la lectura del portal hasta la aplicación publicada, se
   construyó en un día con un agente de programación, lo cual hace viable que una sola persona mantenga el producto.
 
-## 6. Demo
+## 6. Demostración
 
-**URL pública:** https://euthetos.streamlit.app/ (en Streamlit Community Cloud). Si la aplicación estuvo
+**Dirección pública:** https://euthetos.streamlit.app/ (Streamlit Community Cloud). Si la aplicación estuvo
 inactiva, la primera visita tarda alrededor de un minuto en despertarla y en cargar el modelo de lenguaje.
 
-**Correrlo en local:**
+**Correrla en una computadora propia:**
 
 ```bash
 python -m venv .venv
@@ -99,9 +140,9 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-La primera vez se descarga el modelo de lenguaje (unos 470 MB). Para probarla sin un currículo propio, en el panel
-izquierdo puede elegirse uno de los tres currículos ficticios de [`datos/cv_ejemplo/`](datos/cv_ejemplo/), o
-abrirse directamente con `?demo=enfermeria`, `?demo=ingenieria_civil` o `?demo=derecho` al final de la dirección.
+La primera vez se descarga el modelo de lenguaje (unos 470 MB). Para usar un currículo ficticio, basta elegirlo en
+el panel izquierdo o añadir `?ejemplo=enfermeria`, `?ejemplo=ingenieria_civil` o `?ejemplo=derecho` al final de la
+dirección.
 
 **Actualizar los datos:**
 
@@ -110,86 +151,118 @@ python ingesta.py        # lee las ofertas vigentes de Talento Perú (unas 3 hor
 python emparejar.py      # calcula los vectores de las ofertas (unos 10 minutos)
 ```
 
-### Capturas
-
-| Portada | Resultados | Detalle de una oferta |
-|---|---|---|
-| ![Portada](docs/capturas/1_portada.png) | ![Resultados](docs/capturas/2_resultados.png) | ![Oferta](docs/capturas/3_oferta.png) |
-
 ### Arquitectura
 
 ```mermaid
 flowchart LR
-    TP["Talento Perú (SERVIR)<br/>portal oficial"] -->|"ingesta.py<br/>requests + BeautifulSoup"| CSV[("datos/convocatorias.csv")]
-    CSV -->|"emparejar.py<br/>multilingual-e5-small"| VEC[("datos/embeddings.npz")]
+    TP["Talento Perú (SERVIR)<br/>portal oficial"] -->|"ingesta.py<br/>requests + BeautifulSoup"| CSV[("datos/convocatorias.csv<br/>3,938 ofertas")]
+    CSV -->|"emparejar.py<br/>multilingual-e5-small"| VEC[("datos/embeddings.npz<br/>un vector por oferta")]
     P["Persona<br/>carrera + currículo"] --> CV["cv.py<br/>texto, grado y periodos"]
     CV --> APP["app.py<br/>Streamlit"]
     CSV --> REG["reglas.py<br/>carrera, grado y experiencia"]
     REG --> APP
     VEC --> APP
-    APP --> R["Tres grupos de ofertas<br/>motivos, texto literal y CSV"]
+    APP --> R["Tres grupos de ofertas<br/>con motivos, texto literal y descarga"]
 ```
 
 ### Modelos y fuentes, y por qué
 
 | Pieza | Qué se usa | Por qué |
 |---|---|---|
-| Fuente de datos | Talento Perú (SERVIR), leído con `requests` y `BeautifulSoup` | Es el portal oficial de ofertas del Estado y reúne todos los regímenes. No tiene API: la página es una aplicación JSF que se recorre enviando el formulario con su `ViewState`, con dos segundos de pausa entre pedidos |
-| Veredicto | Reglas escritas a mano (`reglas.py`), con 17 pruebas sobre textos reales | Son transparentes, gratuitas y comprobables: cada motivo se muestra junto al texto literal |
-| Orden por parecido | `intfloat/multilingual-e5-small` con `sentence-transformers` | Modelo abierto que corre en CPU, sin clave ni costo; es el mismo de la Sesión 08 del curso |
+| Fuente de datos | Talento Perú (SERVIR), leído con `requests` y `BeautifulSoup` | Es el portal oficial de ofertas del Estado y reúne todos los regímenes. No ofrece una interfaz de programación (API): la página es una aplicación JSF que se recorre enviando el formulario con su `ViewState`, con dos segundos de pausa entre pedidos |
+| Resultado de cada oferta | Reglas escritas a mano (`reglas.py`), con 17 pruebas sobre textos reales | Son transparentes, gratuitas y comprobables: cada motivo se muestra junto al texto literal |
+| Orden por parecido | `intfloat/multilingual-e5-small` con `sentence-transformers` | Modelo abierto que corre en el procesador, sin clave ni costo; es el mismo de la Sesión 08 del curso |
 | Interfaz | Streamlit | Permite publicar gratis y probar el flujo completo en vivo |
 
-No se usa ningún modelo generativo de pago: el veredicto no lo decide un LLM, y el currículo nunca sale del
-servidor de la aplicación.
+No se usa ningún modelo generativo de pago: ningún modelo de lenguaje decide el resultado, y el currículo nunca
+sale del servidor de la aplicación.
 
 ## 7. Modelo de negocio
 
-<!-- REVISAR R5: Frank define quién paga y el precio, idealmente a partir de las conversaciones -->
-**Quién paga.** *Por definir con las conversaciones.* La propuesta inicial es que el uso individual sea gratuito y
-que paguen las instituciones que acompañan a muchas personas en su búsqueda de empleo público: oficinas de
-empleabilidad de universidades e institutos, colegios profesionales y oficinas de empleo municipales.
+**Quién paga.** La persona que busca empleo no paga por saber a qué puede postular: ese es el servicio de entrada.
+Pagan, más adelante, dos tipos de clientes: la persona que quiere **alertas** cuando aparece una oferta que encaja con
+su perfil, y las **instituciones** que acompañan a muchas personas en su búsqueda (oficinas de empleabilidad de
+universidades e institutos, colegios profesionales y oficinas de empleo municipales).
 
-**Precio.** *Por definir.*
+**Precio, por etapas.** El precio sube a medida que el producto ofrece más de lo que hoy ofrece la versión 0.1:
+
+| Etapa | Qué incluye | Precio |
+|---|---|---|
+| **Hoy · versión 0.1** | Búsqueda con el currículo y resultados con sus motivos | **Gratis.** Se ofrece un piloto de tres meses, sin costo, a una oficina de empleabilidad, a cambio de retroalimentación |
+| **Versión 0.2** | Actualización diaria automática y alertas por correo de ofertas nuevas que encajan | **S/ 9.90 al mes** por persona |
+| **Versión 1.0** | Panel institucional con los perfiles de sus egresados o agremiados, alertas para todos y un informe de los requisitos que más les faltan | **S/ 300 al mes** por institución, hasta 1,000 personas |
 
 **Costo por usuario.**
 
 | Concepto | Costo |
 |---|---|
 | Tokens de modelos de pago | S/ 0: no se usa ninguno |
-| Cálculo del vector de un currículo | 0.18 segundos de CPU (medido en una laptop) |
-| Servidor | S/ 0 en Streamlit Community Cloud |
-| Actualización de las ofertas | Una lectura de Talento Perú al día; en una laptop, la primera lectura toma unas 3 horas y las siguientes solo abren las ofertas nuevas |
+| Cálculo del vector de un currículo | 0.18 segundos de procesador (medido en una laptop) |
+| Servidor | S/ 0 en Streamlit Community Cloud; un servidor propio solo hará falta con cuentas de usuario |
+| Actualización de las ofertas | Una lectura de Talento Perú al día; la primera tomó unas 3 horas y las siguientes solo abren las ofertas nuevas |
 | Almacenamiento del currículo | Ninguno: se lee en memoria y no se guarda |
 
 ## 8. Herramientas del curso
 
 | Herramienta | Sesión | Archivo | Para qué se usa |
 |---|---|---|---|
-| Web scraping | 03 · Scraping y APIs | [`ingesta.py`](ingesta.py) | Leer las ofertas vigentes y el detalle de cada una en Talento Perú |
-| Embeddings y búsqueda por significado (la «R» de RAG) | 08 · LLMs y RAG | [`emparejar.py`](emparejar.py) | Ordenar las ofertas según su parecido con el currículo, con los prefijos `query:` y `passage:` y el producto punto `E @ q` vistos en clase |
-| Dashboard y despliegue | 05 · Dashboards y 12 · Despliegue | [`app.py`](app.py) | La aplicación que usa la persona |
+| Extracción de datos de la web (*web scraping*) | 03 · Extracción web y APIs | [`ingesta.py`](ingesta.py) | Leer las ofertas vigentes y el detalle de cada una en Talento Perú |
+| Representaciones vectoriales (*embeddings*) y búsqueda por significado, la «R» de RAG | 08 · Modelos de lenguaje y RAG | [`emparejar.py`](emparejar.py) | Ordenar las ofertas según su parecido con el currículo, con los prefijos `query:` y `passage:` del modelo e5 y el producto punto `E @ q`, como en `llms_a_prueba.ipynb` |
+| Tablero interactivo y publicación | 05 · Visualización y tableros, y 12 · Despliegue | [`app.py`](app.py) | La aplicación que usa la persona |
 
-Se eligieron estas herramientas porque el problema exige, en primer lugar, reunir datos que no tienen API (el
-scraping) y, en segundo lugar, ordenar miles de textos según su significado y no según palabras exactas (los
-embeddings), siendo que un currículo y una oferta rara vez usan las mismas palabras para decir lo mismo.
+Se eligieron estas herramientas porque el problema exige, en primer lugar, reunir datos que no tienen una interfaz
+de programación (la extracción web) y, en segundo lugar, ordenar miles de textos según su significado y no según
+palabras exactas (las representaciones vectoriales), siendo que un currículo y una oferta rara vez usan las mismas
+palabras para decir lo mismo.
 
 ## 9. Qué hizo el agente
 
-<!-- REVISAR R5 -->
 El código fue generado con un agente de programación (Claude Code), a partir de un diseño previo aprobado por el
-autor y de revisiones manuales en cada etapa:
+autor y con revisiones manuales en cada etapa:
 
 | Parte | Qué hizo el agente | Qué decidió o revisó el autor |
 |---|---|---|
-| Problema y alcance | Propuso cuatro ideas sin costo adicional | Eligió el problema, el nombre y el alcance: todas las carreras y todos los regímenes, sin modelos de pago |
+| Problema y alcance | Propuso cuatro ideas sin costo adicional | Eligió el problema, el nombre y el alcance: todas las carreras, todos los regímenes y ningún modelo de pago |
 | `ingesta.py` | Adaptó el lector de Talento Perú de un proyecto anterior del autor y lo hizo reanudable | Aprobó la fuente y el ritmo de lectura |
-| `reglas.py` y pruebas | Escribió las reglas y 17 pruebas con textos reales | Revisó los veredictos en la aplicación |
+| `reglas.py` y pruebas | Escribió las reglas y 17 pruebas con textos reales | Revisó los resultados en la aplicación |
 | `cv.py` | Escribió la lectura del currículo | Detectó que sumaba periodos no acreditables; de ahí salió la tabla de periodos que la persona confirma |
-| `emparejar.py` | Llevó la búsqueda semántica de la Sesión 08 a las ofertas | — |
-| `app.py` | Escribió la interfaz y tres rediseños | Pidió una interfaz sin emojis, más profesional y luego con más color, inspirada en los portafolios del curso |
-| Conversaciones con usuarios | Escribió la guía de preguntas | Hizo las tres conversaciones |
+| `emparejar.py` | Llevó la búsqueda por significado de la Sesión 08 a las ofertas | — |
+| `app.py` | Escribió la interfaz y tres rediseños | Pidió una interfaz sin emojis y más profesional, luego con más color (inspirada en los portafolios del curso), letra más pequeña y un panel fijo |
+| README | Redactó el borrador y calculó sus cifras | Pidió mejorarlo, cuestionó el precio inicial (de ahí el precio por etapas) y pidió reemplazar los términos en inglés |
+| Conversaciones con usuarios | Escribió la guía de preguntas | Hizo las conversaciones |
 
----
+## 10. Competencia, primeros usuarios, hoja de ruta y riesgos
+
+**Competencia.** Las ofertas del Estado se buscan hoy en el propio Talento Perú y en portales que las reúnen, como
+convocatoriasdetrabajo.com o yaempleo.net. En los portales revisados para este proyecto, la búsqueda es por
+palabras o por entidad, y la verificación de los requisitos queda siempre a cargo de la persona. Euthetos no
+compite por tener más ofertas, sino por responder la pregunta que esos portales dejan abierta: *¿puedo postular?*
+
+**Primeros usuarios.** Compañeros de la diplomatura y de la facultad que buscan empleo público, grupos de egresados
+y una oficina de empleabilidad universitaria para el piloto gratuito.
+
+**Hoja de ruta.**
+
+| Mejora | Herramienta del curso | Etapa |
+|---|---|---|
+| Actualización diaria automática de las ofertas | — | 0.2 |
+| Alertas por correo de ofertas nuevas que encajan | — | 0.2 |
+| Medir la precisión de las reglas con una muestra revisada a mano | Evaluación (Sesión 12) | 0.2 |
+| Leer las bases en PDF: cronograma, documentos y requisitos completos | Document AI (Sesión 10) | 0.3 |
+| Tabla de carreras afines, para resolver más ofertas sin «conviene revisar» | — | 0.3 |
+| Mapa de las oportunidades por provincia | GeoPandas y Folium (Sesión 06) | 0.3 |
+| Resumen por audio de cada oferta, para leerla sin pantalla | Texto a voz (Sesión 15) | 0.4 |
+| Panel institucional con cuentas y protección de datos personales (Ley N.° 29733) | — | 1.0 |
+
+**Riesgos y cómo se mitigan.**
+
+| Riesgo | Mitigación |
+|---|---|
+| Talento Perú cambia su página y la lectura deja de funcionar | Los botones se ubican por su texto y no por su código interno; la aplicación muestra la fecha y hora de la última lectura |
+| Una regla lee mal un requisito | Nunca se dice «apto»: cada motivo va junto al texto literal, y lo que no se lee con seguridad pasa a «conviene revisar» |
+| Sobrecargar el portal oficial | Dos segundos de pausa entre pedidos y una sola lectura al día |
+| Datos personales del currículo | Se leen en memoria y no se guardan; los ejemplos son ficticios |
+| El servidor gratuito no garantiza disponibilidad | Si el modelo de lenguaje no carga, la aplicación sigue funcionando con las reglas; para la presentación se graba un video de respaldo |
 
 ## Limitaciones
 
@@ -197,15 +270,14 @@ autor y de revisiones manuales en cada etapa:
   «conviene revisar», nunca a «cumples».
 - Euthetos no sabe si una carrera es «afín» a otra ni evalúa la especialización ni los conocimientos: lo indica para
   que la persona lo lea.
-- La lectura de periodos funciona con fechas escritas como «marzo 2021 – agosto 2023», «03/2021 – 08/2023» o
-  «2021 – 2023»; un currículo escaneado no puede leerse.
-- Euthetos no reemplaza la lectura de las bases: quien decide si una persona es apta es el comité de selección.
+- La lectura de periodos reconoce fechas como «marzo 2021 – agosto 2023», «03/2021 – 08/2023» o «2021 – 2023»; un
+  currículo escaneado no puede leerse.
+- Las ofertas que aparecen idénticas en Talento Perú (mismo puesto, entidad, sueldo y fechas) se cuentan una vez.
+- Euthetos no reemplaza la lectura de las bases: quien decide si una persona es apta es el comité de selección de
+  cada entidad.
 
-## Privacidad
+## Privacidad y licencia
 
 El currículo se lee en memoria y no se guarda. Los tres currículos de ejemplo son ficticios. Los datos de las
-ofertas son públicos y provienen del portal oficial de Talento Perú.
-
-## Licencia
-
+ofertas son públicos y provienen del portal oficial de Talento Perú. El código se publica con licencia
 [MIT](LICENSE).

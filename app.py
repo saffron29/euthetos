@@ -261,8 +261,8 @@ corte = pd.to_datetime(ofertas["leido"]).max()
 # ---------------------------------------------------------------------------
 # Barra lateral: el perfil
 # ---------------------------------------------------------------------------
-# Un enlace como .../?demo=enfermeria abre la aplicación con ese CV ficticio ya cargado
-demo = st.query_params.get("demo")
+# Un enlace como .../?ejemplo=enfermeria abre la aplicación con ese CV ficticio ya cargado
+demo = st.query_params.get("ejemplo") or st.query_params.get("demo")   # ?ejemplo=derecho
 if demo and "ejemplo" not in st.session_state:
     coincidencias = [nombre for nombre, (archivo_cv, _) in CV_DE_EJEMPLO.items() if archivo_cv.startswith(demo)]
     if coincidencias:
