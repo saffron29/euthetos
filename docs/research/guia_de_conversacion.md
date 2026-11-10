@@ -1,7 +1,7 @@
 # Guía para las conversaciones con usuarios potenciales
 
-Se conversó con tres personas que buscan o han buscado trabajo en el Estado peruano. La
-conversación dura unos 15 minutos y no se les muestra la herramienta hasta el final: primero
+Guía para conversar con tres personas que buscan o han buscado trabajo en el Estado peruano.
+Cada conversación dura unos 15 minutos y la herramienta no se muestra hasta el final: primero
 interesa saber cómo resuelven hoy el problema.
 
 ## A quién buscar
