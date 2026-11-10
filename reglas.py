@@ -46,7 +46,10 @@ PATRONES_NIVEL = [
     (ESTUDIANTE, r"estudiante|ultimo ciclo|ultimos ciclos|ciclo academico|estudios universitarios"),
     (EGRESADO, r"egresad[oa]"),
     (BACHILLER, r"bachiller"),
-    (TITULO, r"titul[oa]|licenciad[oa]|licenciatura|abogad[oa]|medico|cirujano|contador publico"),
+    # Los nombres de profesión («ingeniero», «enfermera», «obstetra») también implican título profesional
+    (TITULO, r"titul[oa]|licenciad[oa]|licenciatura|abogad[oa]|medico|cirujano|contador publico|"
+             r"\bingenier[oa]s?\b|\benfermer[oa]s?\b|obstetra|psicolog[oa]s?\b|nutricionista|economista|"
+             r"arquitect[oa]s?\b|odontolog[oa]s?\b|biolog[oa]s?\b|veterinari[oa]s?\b|quimico farmaceutic"),
 ]
 PATRON_POSGRADO = r"maestr|magister|\bmaster\b|doctorado|grado de doctor"
 PATRON_COLEGIATURA = r"colegiad|colegiatura|habilitad|habilitacion"
@@ -215,6 +218,8 @@ REGIMENES = [
     (r"30057", "Ley 30057 (Servicio Civil)"),
     (r"1024|gerente publico", "Gerentes públicos (D. Leg. 1024)"),
     (r"29944|magisterial", "Reforma magisterial (Ley 29944)"),
+    (r"30220|docentes? universitari", "Docencia universitaria (Ley 30220)"),
+    (r"29277|jueces", "Carrera judicial (Ley 29277)"),
     (r"1153|23536", "Salud (D. Leg. 1153)"),
 ]
 

@@ -93,3 +93,15 @@ def test_veredicto_verde_y_rojo():
     assert reglas.veredicto(perfil, oferta)["color"] == "rojo"
     perfil.update(exp_general=2, carrera="Enfermería")
     assert reglas.veredicto(perfil, oferta)["color"] == "rojo"
+
+
+def test_nombre_de_profesion_implica_titulo():
+    assert reglas.nivel_exigido("ENFERMERA")["nivel"] == TITULO
+    assert reglas.nivel_exigido("INGENIERO DE SISTEMAS Y/O AFINES")["nivel"] == TITULO
+    assert reglas.nivel_exigido("TÉCNICO EN ENFERMERÍA")["nivel"] == TECNICO
+    assert reglas.nivel_exigido("AUXILIAR")["nivel"] is None
+
+
+def test_otros_regimenes():
+    assert reglas.regimen("DOCENTES UNIVERSITARIOS LEY 30220-5") == "Docencia universitaria (Ley 30220)"
+    assert reglas.regimen("276-0012") == "D. Leg. 276"

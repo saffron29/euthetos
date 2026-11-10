@@ -242,7 +242,10 @@ def calcular_afinidad(carrera, texto_cv, ids):
     E = vectores_alineados(ids)
     if E is None:
         return None
-    q = emparejar.vector_de_cv(cargar_modelo(), carrera, texto_cv)
+    try:
+        q = emparejar.vector_de_cv(cargar_modelo(), carrera, texto_cv)
+    except Exception:            # sin modelo (p. ej., sin memoria en el servidor): se ordena solo por reglas
+        return None
     return emparejar.afinidad(E, q)
 
 
