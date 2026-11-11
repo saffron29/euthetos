@@ -2,6 +2,8 @@
 
 > *Euthetos* (εὔθετος) significa "apto" o "bien dispuesto para algo" en griego antiguo.
 
+[![Pruebas](https://github.com/saffron29/euthetos/actions/workflows/pruebas.yml/badge.svg)](https://github.com/saffron29/euthetos/actions/workflows/pruebas.yml)
+
 **Hacemos que cualquier profesional sepa en un minuto a qué convocatorias del Estado peruano puede postular,
 mediante un lector de requisitos que compara su currículo con todas las ofertas vigentes de Talento Perú.**
 
@@ -127,7 +129,10 @@ compara cada oferta vigente y la ubica en uno de tres grupos:
 - **Cumples lo medible:** la oferta nombra la carrera y se cumplen el grado y los años de experiencia.
 - **Conviene revisar:** nada descarta a la persona, pero hay algo que debe leer ella misma (carreras afines,
   colegiatura, posgrado o un texto poco claro).
-- **Te falta un requisito:** sirve para saber qué separa a la persona de cada puesto.
+- **Te falta un requisito:** sirve para saber qué separa a la persona de cada puesto. Además, el recuadro
+  **"Qué te acercaría a más ofertas"** vuelve a aplicar las mismas reglas cambiando un solo dato del perfil, y
+  muestra cuántas de esas ofertas se abrirían con uno o dos años más de experiencia o con el nivel de estudios
+  siguiente. Por ejemplo, al ingeniero civil bachiller del ejemplo, el título profesional le abriría 243 ofertas más.
 
 Dentro de cada grupo, primero aparecen las ofertas que nombran la carrera y luego las más parecidas al currículo, y
 la lista puede acotarse con un buscador de palabras y con filtros por departamento, régimen laboral y sueldo mínimo.
@@ -193,7 +198,7 @@ flowchart LR
 | Pieza | Qué se usa | Por qué |
 |---|---|---|
 | Fuente de datos | Talento Perú (SERVIR), leído con `requests` y `BeautifulSoup` | Es el portal oficial de ofertas del Estado y reúne todos los regímenes. No ofrece una interfaz de programación (API): la página es una aplicación JSF que se recorre enviando el formulario con su `ViewState`, con dos segundos de pausa entre pedidos |
-| Resultado de cada oferta | Reglas escritas a mano (`reglas.py`), con 17 pruebas sobre textos reales | Son transparentes, gratuitas y comprobables: cada motivo se muestra junto al texto literal |
+| Resultado de cada oferta | Reglas escritas a mano (`reglas.py`), con 19 pruebas sobre textos reales que se corren automáticamente en GitHub con cada cambio | Son transparentes, gratuitas y comprobables: cada motivo se muestra junto al texto literal |
 | Orden por parecido | `intfloat/multilingual-e5-small` con `sentence-transformers` | Modelo abierto que corre en el procesador, sin clave ni costo; es el mismo de la Sesión 08 del curso |
 | Interfaz | Streamlit | Permite publicar gratis y probar el flujo completo en vivo |
 
@@ -252,10 +257,10 @@ autor y con revisiones manuales en cada etapa:
 |---|---|---|
 | Problema y alcance | Propuso cuatro ideas sin costo adicional | Eligió el problema, el nombre y el alcance: todas las carreras, todos los regímenes y ningún modelo de pago |
 | `ingesta.py` | Adaptó el lector de Talento Perú de un proyecto anterior del autor y lo hizo reanudable | Aprobó la fuente y el ritmo de lectura |
-| `reglas.py` y pruebas | Escribió las reglas y 17 pruebas con textos reales | Revisó los resultados en la aplicación |
+| `reglas.py` y pruebas | Escribió las reglas, 19 pruebas con textos reales y la comprobación automática en GitHub (`.github/workflows/pruebas.yml`) | Revisó los resultados en la aplicación y aprobó que las pruebas se corran con cada cambio |
 | `cv.py` | Escribió la lectura del currículo | Detectó que sumaba periodos no acreditables; de ahí salió la tabla de periodos que la persona confirma |
 | `emparejar.py` | Llevó la búsqueda por significado de la Sesión 08 a las ofertas | — |
-| `app.py` | Escribió la interfaz y tres rediseños, y propuso mejoras | Pidió una interfaz sin emojis y más profesional, luego con más color (con los tonos de su portafolio), letra más pequeña y un panel fijo; de las mejoras propuestas, aprobó el buscador, los filtros por régimen, el aviso de privacidad y la tabla de competencia |
+| `app.py` | Escribió la interfaz y tres rediseños, y propuso mejoras | Pidió una interfaz sin emojis y más profesional, luego con más color (con los tonos de su portafolio), letra más pequeña y un panel fijo; de las mejoras propuestas, aprobó el buscador, los filtros por régimen, el aviso de privacidad, la tabla de competencia y el recuadro "Qué te acercaría a más ofertas" |
 | README | Redactó el borrador y calculó sus cifras | Pidió mejorarlo, cuestionó el precio inicial (de ahí el precio por etapas) y pidió reemplazar los términos en inglés |
 | Conversaciones con usuarios | Escribió la guía de preguntas y su versión corta para WhatsApp, y ordenó las respuestas en notas | Hizo las conversaciones, pasó las respuestas literales y revisó las notas |
 
@@ -293,7 +298,7 @@ y una oficina de empleabilidad universitaria para el piloto gratuito.
 | Riesgo | Mitigación |
 |---|---|
 | Talento Perú cambia su página y la lectura deja de funcionar | Los botones se ubican por su texto y no por su código interno; la aplicación muestra la fecha y hora de la última lectura |
-| Una regla lee mal un requisito | Nunca se dice "apto": cada motivo va junto al texto literal, y lo que no se lee con seguridad pasa a "conviene revisar" |
+| Una regla lee mal un requisito | Nunca se dice "apto": cada motivo va junto al texto literal, y lo que no se lee con seguridad pasa a "conviene revisar". Además, las 19 pruebas se corren con cada cambio, de modo que un arreglo no puede romper en silencio lo que ya funcionaba |
 | Sobrecargar el portal oficial | Dos segundos de pausa entre pedidos y una sola lectura al día |
 | Datos personales del currículo | Se leen en memoria y no se guardan; los ejemplos son ficticios |
 | El servidor gratuito no garantiza disponibilidad | Si el modelo de lenguaje no carga, la aplicación sigue funcionando con las reglas; para la presentación se graba un video de respaldo |

@@ -84,6 +84,7 @@ st.markdown("""
 
 /* Resumen de resultados */
 .eu-resumen {display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin: .6rem 0 1rem;}
+.eu-resumen.brechas {grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); margin: .4rem 0 .6rem;}
 .eu-dato {background: var(--f); border: 1px solid var(--b); border-radius: 12px; padding: .85rem 1rem;}
 .eu-dato b {display: block; font-family: "Montserrat"; font-size: 1.6rem; font-weight: 700; color: var(--t);
             line-height: 1.1;}
@@ -253,6 +254,17 @@ def evaluar(perfil_como_tupla, hoy):
     resultados = [reglas.veredicto(perfil, oferta, oferta) for oferta in ofertas.to_dict("records")]
     return ([r["color"] for r in resultados], [r["motivos"] for r in resultados],
             [r["carrera"] for r in resultados])
+
+
+@st.cache_data(show_spinner=False)
+def brechas(perfil_como_tupla, hoy):
+    """Para cada escenario de reglas.escenarios_de_mejora, los id de las ofertas en las que hoy
+    falta un requisito y que, con ese cambio, pasarían a "Cumples lo medible" o "Conviene revisar"."""
+    perfil = dict(perfil_como_tupla)
+    colores = evaluar(perfil_como_tupla, hoy)[0]
+    rojas = [o for o, color in zip(cargar_ofertas(hoy).to_dict("records"), colores) if color == "rojo"]
+    return [(etiqueta, {o["id"] for o in rojas if reglas.veredicto(alternativo, o, o)["color"] != "rojo"})
+            for etiqueta, alternativo in reglas.escenarios_de_mejora(perfil)]
 
 
 @st.cache_data(show_spinner="Buscando las ofertas más parecidas a tu currículo…")
@@ -538,6 +550,29 @@ def mostrar(grupo, explicacion, vacio):
         tarjeta(oferta)
 
 
+def que_te_acercaria(rojas):
+    """Cuántas de las ofertas en las que falta un requisito se abrirían si cambiara un solo dato del perfil."""
+    if rojas.empty:
+        return
+    ids = set(rojas["id"])
+    abiertas = [(etiqueta, len(ids & conjunto))
+                for etiqueta, conjunto in brechas(tuple(sorted(perfil.items())), hoy)]
+    sin_tu_carrera = int((rojas["estado_carrera"] == "no").sum())
+    with st.container(border=True, key="brechas"):
+        st.markdown('<p class="eu-titulo">Qué te acercaría a más ofertas</p>'
+                    f'<p class="eu-nota" style="margin:.1rem 0 .3rem">De estas {miles(len(rojas))} ofertas, cuántas '
+                    'pasarían a "Cumples lo medible" o "Conviene revisar" si cambiara un solo dato de tu perfil, '
+                    'con las mismas reglas.</p>', unsafe_allow_html=True)
+        tarjetas = "".join(f'<div class="eu-dato" style="--f:#EAF0F8;--b:#C9D6EA;--t:#1F4E8C">'
+                           f'<b>+{miles(n)}</b><span>{html.escape(etiqueta)}</span></div>'
+                           for etiqueta, n in abiertas)
+        st.markdown(f'<div class="eu-resumen brechas">{tarjetas}</div>', unsafe_allow_html=True)
+        if sin_tu_carrera:
+            st.markdown(f'<p class="eu-nota" style="margin:0 0 .35rem">En {miles(sin_tu_carrera)} de ellas, la formación '
+                        "pedida no menciona tu carrera: ahí ningún cambio de experiencia o de grado basta.</p>",
+                        unsafe_allow_html=True)
+
+
 pestana_verde, pestana_amarilla, pestana_roja = st.tabs([
     f"Cumples lo medible · {miles(len(verdes))}", f"Conviene revisar · {miles(len(amarillas))}",
     f"Te falta un requisito · {miles(len(rojas))}"])
@@ -548,6 +583,7 @@ with pestana_amarilla:
     mostrar(amarillas, "Nada te descarta, pero hay algo que debes leer tú: carreras afines, colegiatura, "
                        "posgrado o un texto poco claro.", "No hay ofertas por revisar.")
 with pestana_roja:
+    que_te_acercaria(rojas)
     mostrar(rojas, "Te falta al menos un requisito medible. Sirve para saber qué te separa de cada puesto.",
             "No hay ofertas en esta categoría.")
 

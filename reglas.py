@@ -308,3 +308,20 @@ def veredicto(perfil, oferta, pedido=None):
     estados = {estado for estado, _ in motivos}
     color = "rojo" if "falta" in estados else "amarillo" if "revisar" in estados else "verde"
     return {"color": color, "motivos": motivos, "carrera": carrera}
+
+
+def escenarios_de_mejora(perfil):
+    """Perfiles alternativos que cambian un solo dato, para saber qué acercaría a más ofertas.
+
+    Devuelve una lista de (etiqueta, perfil): con 1 y con 2 años más de experiencia
+    (general y específica a la vez) y con el nivel siguiente de NIVELES, si lo hay.
+    Con cada perfil se vuelve a llamar a veredicto(), es decir, se usan las mismas reglas.
+    """
+    escenarios = [(f"Con {extra} año{'s' if extra > 1 else ''} más de experiencia",
+                   {**perfil, "exp_general": perfil["exp_general"] + extra,
+                    "exp_especifica": perfil["exp_especifica"] + extra})
+                  for extra in (1, 2)]
+    if perfil["nivel"] < DOCTORADO:
+        siguiente = perfil["nivel"] + 1
+        escenarios.append((f"Con el nivel siguiente: {NIVELES[siguiente]}", {**perfil, "nivel": siguiente}))
+    return escenarios

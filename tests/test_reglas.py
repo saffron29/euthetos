@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import reglas
-from reglas import BACHILLER, EGRESADO, SECUNDARIA, TECNICO, TITULO
+from reglas import BACHILLER, DOCTORADO, EGRESADO, SECUNDARIA, TECNICO, TITULO
 
 
 def test_nivel_titulo_con_colegiatura():
@@ -93,6 +93,31 @@ def test_veredicto_verde_y_rojo():
     assert reglas.veredicto(perfil, oferta)["color"] == "rojo"
     perfil.update(exp_general=2, carrera="Enfermería")
     assert reglas.veredicto(perfil, oferta)["color"] == "rojo"
+
+
+def test_escenarios_de_mejora():
+    perfil = {"carrera": "Ciencia Política", "nivel": BACHILLER, "colegiado": False,
+              "exp_general": 0.5, "exp_especifica": 0.5}
+    etiquetas = [etiqueta for etiqueta, _ in reglas.escenarios_de_mejora(perfil)]
+    assert etiquetas == ["Con 1 año más de experiencia", "Con 2 años más de experiencia",
+                         "Con el nivel siguiente: Título profesional o licenciatura"]
+    # El perfil original no cambia
+    assert perfil["exp_general"] == 0.5 and perfil["nivel"] == BACHILLER
+    # Con el grado más alto no hay nivel siguiente
+    assert len(reglas.escenarios_de_mejora({**perfil, "nivel": DOCTORADO})) == 2
+
+
+def test_un_anio_mas_abre_la_oferta():
+    oferta = {"formacion": "BACHILLER UNIVERSITARIO EN SOCIOLOGÍA O CIENCIA POLÍTICA",
+              "experiencia": "EXPERIENCIA GENERAL DE UN (01) AÑO. EXPERIENCIA ESPECÍFICA DE SEIS (06) MESES EN LA FUNCIÓN.",
+              "numero_convocatoria": "D.LEG 1057 - INDETERMINADO-12"}
+    perfil = {"carrera": "Ciencia Política", "nivel": TITULO, "colegiado": False,
+              "exp_general": 0.5, "exp_especifica": 0.5}
+    assert reglas.veredicto(perfil, oferta)["color"] == "rojo"
+    con_un_anio, con_dos, con_maestria = (p for _, p in reglas.escenarios_de_mejora(perfil))
+    assert reglas.veredicto(con_un_anio, oferta)["color"] == "verde"
+    # Subir el grado no resuelve lo que falta, que es la experiencia
+    assert reglas.veredicto(con_maestria, oferta)["color"] == "rojo"
 
 
 def test_nombre_de_profesion_implica_titulo():
