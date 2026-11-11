@@ -1,6 +1,6 @@
 # Euthetos
 
-> *Euthetos* (εὔθετος) significa «apto» o «bien dispuesto para algo» en griego antiguo.
+> *Euthetos* (εὔθετος) significa "apto" o "bien dispuesto para algo" en griego antiguo.
 
 **Hacemos que cualquier profesional sepa en un minuto a qué convocatorias del Estado peruano puede postular,
 mediante un lector de requisitos que compara su currículo con todas las ofertas vigentes de Talento Perú.**
@@ -63,7 +63,7 @@ Frank Pinares Gutiérrez es licenciado en Ciencia Política y Gobierno por la Po
 Perú (2026) y cursa la Diplomatura de Especialización en Ciencia de Datos para las Ciencias Sociales y la Gestión
 Pública (Q-Lab PUCP).
 
-Durante 2026 postuló a prácticas y puestos en siete entidades públicas, de modo que conoce de primera mano el
+Durante muchos años ha postulado a puestos en varias entidades públicas, de modo que conoce de primera mano el
 problema: revisar convocatoria por convocatoria si se cumplen los requisitos, para descubrir muchas veces, al
 final de la lectura, que alguno no se cumple. Antes de Euthetos, el autor ya había construido para su propia
 búsqueda un buscador diario de convocatorias y un preparador de postulaciones, y de ellos proviene la experiencia
@@ -103,13 +103,13 @@ la guía de preguntas utilizada.
 
 | Conversación | Perfil | Resumen |
 |---|---|---|
-| [1](docs/research/conversacion_1.md) | Sociología; hoy trabaja sobre todo en ONG; revisó una convocatoria hace un año | Leía las bases de cada convocatoria, lo que le tomaba algunos minutos por aviso, y al inicio de su carrera quedó «no apto» muchas veces. Se enteraba por contactos y por una página que reúne convocatorias. La herramienta le pareció útil, aunque señaló que otras páginas ya lo hacen; no sabe si pagaría, pero cree que las instituciones grandes sí lo harían |
+| [1](docs/research/conversacion_1.md) | Sociología; hoy trabaja sobre todo en ONG; revisó una convocatoria hace un año | Leía las bases de cada convocatoria, lo que le tomaba algunos minutos por aviso, y al inicio de su carrera quedó "no apto" muchas veces. Se enteraba por contactos y por una página que reúne convocatorias. La herramienta le pareció útil, aunque señaló que otras páginas ya lo hacen; no sabe si pagaría, pero cree que las instituciones grandes sí lo harían |
 | [2](docs/research/conversacion_2.md) | Derecho; revisó convocatorias una semana antes | Leía los documentos y las bases de cada convocatoria, lo que describió como mucho trabajo, y trataba de no perder tiempo en las que no eran de su perfil. Se entera por avisos de conocidos y por la web de SERVIR. Cree que la herramienta ahorraría mucho tiempo, pero que podría mejorarse con más funciones |
-| [3](docs/research/conversacion_3.md) | Psicología; se ha dedicado sobre todo al sector privado | Leía las bases para decidir si convenía postular y, así, evitar quedar «no apto». Usaba una página que reúne convocatorias. Cree que la herramienta tiene potencial, pero que necesita más funciones |
+| [3](docs/research/conversacion_3.md) | Psicología; se ha dedicado sobre todo al sector privado | Leía las bases para decidir si convenía postular y, así, evitar quedar "no apto". Usaba una página que reúne convocatorias. Cree que la herramienta tiene potencial, pero que necesita más funciones |
 
 De estas conversaciones se desprenden cuatro hallazgos. En primer lugar, las tres personas resolvían el problema
 de la misma manera: leyendo las bases de cada convocatoria, una por una, lo cual una de ellas describió como mucho
-trabajo. En segundo lugar, quedar «no apto» fue frecuente al inicio de la carrera, mientras que las otras dos
+trabajo. En segundo lugar, quedar "no apto" fue frecuente al inicio de la carrera, mientras que las otras dos
 personas leían las bases precisamente para evitarlo; es decir, el costo principal es el tiempo de lectura. En
 tercer lugar, solo una persona busca en la web de SERVIR: las demás se enteran por sus contactos o por páginas que
 reúnen convocatorias, que se comparan en la [sección 10](#10-competencia-primeros-usuarios-hoja-de-ruta-y-riesgos).
@@ -134,7 +134,7 @@ la lista puede acotarse con un buscador de palabras y con filtros por departamen
 Cada oferta muestra por qué quedó en su grupo, el texto literal publicado por la entidad y el enlace a sus bases.
 
 **Idea clave.** Talento Perú ya publica los requisitos separados en secciones, de manera que lo medible puede leerse
-con reglas transparentes y comprobables, sin un modelo de lenguaje de pago que «decida» si alguien es apto. Así, la
+con reglas transparentes y comprobables, sin un modelo de lenguaje de pago que "decida" si alguien es apto. Así, la
 inteligencia artificial se reserva para lo que las reglas no resuelven, es decir, ordenar miles de ofertas según su
 parecido con un currículo; y para ello basta un modelo abierto y pequeño. De esta forma, el costo por usuario es
 prácticamente nulo, el currículo no se envía a ningún servicio externo y cada resultado puede verificarse contra el
@@ -235,7 +235,7 @@ espera de las instituciones.
 | Herramienta | Sesión | Archivo | Para qué se usa |
 |---|---|---|---|
 | Extracción de datos de la web (*web scraping*) | 03 · Extracción web y APIs | [`ingesta.py`](ingesta.py) | Leer las ofertas vigentes y el detalle de cada una en Talento Perú |
-| Representaciones vectoriales (*embeddings*) y búsqueda por significado, la «R» de RAG | 08 · Modelos de lenguaje y RAG | [`emparejar.py`](emparejar.py) | Ordenar las ofertas según su parecido con el currículo, con los prefijos `query:` y `passage:` del modelo e5 y el producto punto `E @ q`, como en `llms_a_prueba.ipynb` |
+| Representaciones vectoriales (*embeddings*) y búsqueda por significado, la "R" de RAG | 08 · Modelos de lenguaje y RAG | [`emparejar.py`](emparejar.py) | Ordenar las ofertas según su parecido con el currículo, con los prefijos `query:` y `passage:` del modelo e5 y el producto punto `E @ q`, como en `llms_a_prueba.ipynb` |
 | Tablero interactivo y publicación | 05 · Visualización y tableros, y 12 · Despliegue | [`app.py`](app.py) | La aplicación que usa la persona |
 
 Se eligieron estas herramientas porque el problema exige, en primer lugar, reunir datos que no tienen una interfaz
@@ -255,7 +255,7 @@ autor y con revisiones manuales en cada etapa:
 | `reglas.py` y pruebas | Escribió las reglas y 17 pruebas con textos reales | Revisó los resultados en la aplicación |
 | `cv.py` | Escribió la lectura del currículo | Detectó que sumaba periodos no acreditables; de ahí salió la tabla de periodos que la persona confirma |
 | `emparejar.py` | Llevó la búsqueda por significado de la Sesión 08 a las ofertas | — |
-| `app.py` | Escribió la interfaz y tres rediseños; revisó los otros proyectos del issue y propuso ideas | Pidió una interfaz sin emojis y más profesional, luego con más color (inspirada en los portafolios del curso), letra más pequeña y un panel fijo; de las ideas tomadas de otros proyectos, aprobó el buscador, los filtros por régimen, el aviso de privacidad y la tabla de competencia |
+| `app.py` | Escribió la interfaz y tres rediseños, y propuso mejoras | Pidió una interfaz sin emojis y más profesional, luego con más color (con los tonos de su portafolio), letra más pequeña y un panel fijo; de las mejoras propuestas, aprobó el buscador, los filtros por régimen, el aviso de privacidad y la tabla de competencia |
 | README | Redactó el borrador y calculó sus cifras | Pidió mejorarlo, cuestionó el precio inicial (de ahí el precio por etapas) y pidió reemplazar los términos en inglés |
 | Conversaciones con usuarios | Escribió la guía de preguntas y su versión corta para WhatsApp, y ordenó las respuestas en notas | Hizo las conversaciones, pasó las respuestas literales y revisó las notas |
 
@@ -283,7 +283,7 @@ y una oficina de empleabilidad universitaria para el piloto gratuito.
 | Alertas por correo de ofertas nuevas que encajan | — | 0.2 |
 | Medir la precisión de las reglas con una muestra revisada a mano | Evaluación (Sesión 12) | 0.2 |
 | Leer las bases en PDF: cronograma, documentos y requisitos completos | Document AI (Sesión 10) | 0.3 |
-| Tabla de carreras afines, para resolver más ofertas sin «conviene revisar» | — | 0.3 |
+| Tabla de carreras afines, para resolver más ofertas sin "conviene revisar" | — | 0.3 |
 | Mapa de las oportunidades por provincia | GeoPandas y Folium (Sesión 06) | 0.3 |
 | Resumen por audio de cada oferta, para leerla sin pantalla | Texto a voz (Sesión 15) | 0.4 |
 | Panel institucional con cuentas y protección de datos personales (Ley N.° 29733) | — | 1.0 |
@@ -293,7 +293,7 @@ y una oficina de empleabilidad universitaria para el piloto gratuito.
 | Riesgo | Mitigación |
 |---|---|
 | Talento Perú cambia su página y la lectura deja de funcionar | Los botones se ubican por su texto y no por su código interno; la aplicación muestra la fecha y hora de la última lectura |
-| Una regla lee mal un requisito | Nunca se dice «apto»: cada motivo va junto al texto literal, y lo que no se lee con seguridad pasa a «conviene revisar» |
+| Una regla lee mal un requisito | Nunca se dice "apto": cada motivo va junto al texto literal, y lo que no se lee con seguridad pasa a "conviene revisar" |
 | Sobrecargar el portal oficial | Dos segundos de pausa entre pedidos y una sola lectura al día |
 | Datos personales del currículo | Se leen en memoria y no se guardan; los ejemplos son ficticios |
 | El servidor gratuito no garantiza disponibilidad | Si el modelo de lenguaje no carga, la aplicación sigue funcionando con las reglas; para la presentación se graba un video de respaldo |
@@ -301,10 +301,10 @@ y una oficina de empleabilidad universitaria para el piloto gratuito.
 ## Limitaciones
 
 - Las reglas no leen el grado exigido en el 8% de las ofertas ni la experiencia en el 10%; esas ofertas pasan a
-  «conviene revisar», nunca a «cumples».
-- Euthetos no sabe si una carrera es «afín» a otra ni evalúa la especialización ni los conocimientos: lo indica para
+  "conviene revisar", nunca a "cumples".
+- Euthetos no sabe si una carrera es "afín" a otra ni evalúa la especialización ni los conocimientos: lo indica para
   que la persona lo lea.
-- La lectura de periodos reconoce fechas como «marzo 2021 – agosto 2023», «03/2021 – 08/2023» o «2021 – 2023»; un
+- La lectura de periodos reconoce fechas como "marzo 2021 – agosto 2023", "03/2021 – 08/2023" o "2021 – 2023"; un
   currículo escaneado no puede leerse.
 - Las ofertas que aparecen idénticas en Talento Perú (mismo puesto, entidad, sueldo y fechas) se cuentan una vez.
 - Euthetos no reemplaza la lectura de las bases: quien decide si una persona es apta es el comité de selección de

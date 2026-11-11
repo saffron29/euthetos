@@ -231,7 +231,7 @@ def leer_detalle(sesion, campos, boton_detalle):
         enlaces = re.findall(r"https?://\S+", detalle_texto)
     enlaces = [e if e.startswith("http") else "https://" + e for e in enlaces]
 
-    # El N.° de aviso tiene 6 cifras; con 5 se confundía con leyes citadas en el texto («Ley N° 23536»)
+    # El N.° de aviso tiene 6 cifras; con 5 se confundía con leyes citadas en el texto ("Ley N° 23536")
     numero = re.search(r"N°\s*(\d{6,})", soup.get_text(" "))
     return {
         "n_aviso": numero.group(1) if numero else None,

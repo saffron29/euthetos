@@ -1,7 +1,7 @@
 """
 Búsqueda por significado: ordena las ofertas según cuánto se parecen al CV.
 
-Es la «R» de RAG vista en la Sesión 08 del curso (llms_a_prueba.ipynb):
+Es la "R" de RAG vista en la Sesión 08 del curso (llms_a_prueba.ipynb):
 embeddings + producto punto. Se usa el mismo modelo abierto de la clase,
 `multilingual-e5-small`, que corre en CPU, sin clave y sin costo.
 

@@ -20,7 +20,7 @@ Las respuestas se transcriben tal como se recibieron.
 
 > Tenía que leer las bases para saber si era buena idea postular
 
-**3. ¿Alguna vez quedaste «no apto» o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?**
+**3. ¿Alguna vez quedaste "no apto" o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?**
 
 > Justo leía las bases para evitar que me pase eso
 
@@ -34,11 +34,11 @@ Las respuestas se transcriben tal como se recibieron.
 
 ## Qué se concluye
 
-- **Se confirma** que la decisión de postular depende de leer las bases («para saber si era buena idea postular») y
-  que esa lectura sirve para evitar quedar «no apto».
+- **Se confirma** que la decisión de postular depende de leer las bases ("para saber si era buena idea postular") y
+  que esa lectura sirve para evitar quedar "no apto".
 - **Canales:** una página que reúne convocatorias (portaltrabajos.pe), que las agrupa por departamento, entidad y
   carrera, pero no compara el currículo con los requisitos. No menciona Talento Perú.
-- **Sobre Euthetos:** cree que «tiene potencial», pero que «hay que meterle más cosas».
+- **Sobre Euthetos:** cree que "tiene potencial", pero que "hay que meterle más cosas".
 - **Queda abierto:** cuándo revisó por última vez una convocatoria, qué funciones espera, qué entendió primero, qué
   le confundió y si pagaría por las alertas (las respuestas no lo mencionan).
 - **Qué cambia en el producto:** igual que en la conversación 2, la lista de mejoras debe definirse preguntando qué

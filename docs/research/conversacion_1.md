@@ -20,7 +20,7 @@ Las respuestas se transcriben tal como se recibieron.
 
 > Revisaba las bases de cada convocatoria, me tardaba algunos minutos en leer
 
-**3. ¿Alguna vez quedaste «no apto» o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?**
+**3. ¿Alguna vez quedaste "no apto" o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?**
 
 > Sí, muchas veces cuando inicié
 
@@ -35,15 +35,15 @@ Las respuestas se transcriben tal como se recibieron.
 ## Qué se concluye
 
 - **Se confirma** que la forma de saber si se cumplen los requisitos es leer las bases de cada convocatoria, una por
-  una, y que quedar «no apto» fue frecuente al inicio de su carrera («muchas veces cuando inicié»). La respuesta no
+  una, y que quedar "no apto" fue frecuente al inicio de su carrera ("muchas veces cuando inicié"). La respuesta no
   dice qué requisito le faltó.
 - **Canales:** contactos y una página que reúne convocatorias (convocatoriasdetrabajo.com). No menciona Talento Perú.
-- **Sobre Euthetos:** le parece útil, pero considera que otras páginas «hacen eso». Las dos páginas que se
+- **Sobre Euthetos:** le parece útil, pero considera que otras páginas "hacen eso". Las dos páginas que se
   mencionaron en estas conversaciones reúnen convocatorias, pero no comparan el currículo con los requisitos (ver la
   tabla de competencia del [README](../../README.md#10-competencia-primeros-usuarios-hoja-de-ruta-y-riesgos)); por lo
   tanto, esa diferencia debe mostrarse con más claridad.
 - **Disposición a pagar:** no sabe si pagaría, pero cree que las instituciones grandes sí lo harían.
-- **Queda abierto:** qué entendió primero, qué le confundió y qué funciones espera cuando pregunta «qué más podría
-  hacer».
+- **Queda abierto:** qué entendió primero, qué le confundió y qué funciones espera cuando pregunta "qué más podría
+  hacer".
 - **Qué cambia en el producto:** se refuerza que quien paga sea la institución (sección 7 del README) y que la
   presentación explique en qué se diferencia Euthetos de las páginas que reúnen convocatorias.

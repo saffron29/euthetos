@@ -20,7 +20,7 @@ Las respuestas se transcriben tal como se recibieron.
 
 > Tuve que leer los documentos y las bases para cada convocatoria, era un montón
 
-**3. ¿Alguna vez quedaste «no apto» o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?**
+**3. ¿Alguna vez quedaste "no apto" o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?**
 
 > Intentaba no perder el tiempo en convocatorias que no fueran de mi perfil
 
@@ -34,14 +34,14 @@ Las respuestas se transcriben tal como se recibieron.
 
 ## Qué se concluye
 
-- **Se confirma** que leer «los documentos y las bases para cada convocatoria» es la forma de saber si se cumplen
-  los requisitos, y que ese trabajo pesa («era un montón»). Es la única de las tres personas que buscó convocatorias
+- **Se confirma** que leer "los documentos y las bases para cada convocatoria" es la forma de saber si se cumplen
+  los requisitos, y que ese trabajo pesa ("era un montón"). Es la única de las tres personas que buscó convocatorias
   en la última semana.
-- **El costo es el tiempo:** no dice haber quedado «no apto», sino que intentaba no perder el tiempo en convocatorias
+- **El costo es el tiempo:** no dice haber quedado "no apto", sino que intentaba no perder el tiempo en convocatorias
   que no fueran de su perfil, que es justamente lo que Euthetos filtra.
 - **Canales:** avisos de conocidos y la web de SERVIR, que es donde se publica Talento Perú, la fuente de Euthetos.
-- **Sobre Euthetos:** cree que «ahorraría mucho tiempo», pero que «podría mejorarse con más cosas».
+- **Sobre Euthetos:** cree que "ahorraría mucho tiempo", pero que "podría mejorarse con más cosas".
 - **Queda abierto:** qué funciones espera, qué entendió primero, qué le confundió y si pagaría por las alertas (la
   respuesta no lo menciona).
 - **Qué cambia en el producto:** el ahorro de tiempo es el beneficio que reconoce, de modo que es el que debe
-  destacarse; la lista de mejoras debe definirse preguntando qué «más cosas» espera.
+  destacarse; la lista de mejoras debe definirse preguntando qué "más cosas" espera.

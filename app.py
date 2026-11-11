@@ -1,5 +1,5 @@
 """
-Euthetos («apto», en griego antiguo)
+Euthetos ("apto", en griego antiguo)
 Descubre en un minuto a qué convocatorias del Estado peruano puedes postular.
 
     streamlit run app.py
@@ -185,15 +185,15 @@ def legible(texto, como_nombre=False):
     """'ESPECIALISTA LEGAL I - TFL' -> 'Especialista legal I - TFL' (las siglas sin vocales se respetan)."""
     if not isinstance(texto, str):
         return ""
-    # Algunas entidades publican Ñ donde iban comillas: «ÑPLATAFORMAS ... PAISÑ»
+    # Algunas entidades publican Ñ donde iban comillas: "ÑPLATAFORMAS ... PAISÑ"
     if re.search(r"[A-Z]Ñ(\s|$|[,.)-])", texto):
-        texto = re.sub(r"\bÑ(?=[A-ZÁÉÍÓÚ]{3})", "«", texto)
-        texto = re.sub(r"(?<=[A-ZÁÉÍÓÚ])Ñ(?=\s|$|[,.)-])", "»", texto)
+        texto = re.sub(r"\bÑ(?=[A-ZÁÉÍÓÚ]{3})", '"', texto)
+        texto = re.sub(r"(?<=[A-ZÁÉÍÓÚ])Ñ(?=\s|$|[,.)-])", '"', texto)
     palabras = []
     for posicion, palabra in enumerate(texto.split()):
         letras = re.sub(r"[^a-záéíóúñ]", "", palabra.lower())
         es_sigla = ((palabra.isupper() and 2 <= len(letras) <= 5 and not re.search(r"[aeiouáéíóú]", letras))
-                    or re.fullmatch(r"(?:[A-ZÁÉÍÓÚÑ]\.)+[,;]?", palabra))           # «TFL», «A.I.S.»
+                    or re.fullmatch(r"(?:[A-ZÁÉÍÓÚÑ]\.)+[,;]?", palabra))           # "TFL", "A.I.S."
         if letras in ROMANOS or es_sigla:
             palabras.append(palabra.upper())
         elif posicion == 0 or (como_nombre and letras not in CONECTORES):
@@ -353,7 +353,7 @@ if not carrera.strip():
 <div class="eu-aviso"><b>Privacidad.</b> Tu currículo se lee en memoria y no se guarda ni se envía a ningún servicio
 externo, porque el modelo de lenguaje corre dentro de Euthetos. Los datos de las ofertas son públicos y vienen de
 Talento Perú. Euthetos es informativo: quien decide si eres apto es el comité de selección de cada entidad.</div>
-<p class="eu-nota"><i>Euthetos</i> (εὔθετος) significa «apto» en griego antiguo. ¿No tienes tu currículo a la mano?
+<p class="eu-nota"><i>Euthetos</i> (εὔθετος) significa "apto" en griego antiguo. ¿No tienes tu currículo a la mano?
 Elige uno ficticio en el panel de la izquierda.</p>""", unsafe_allow_html=True)
     st.stop()
 
@@ -407,7 +407,7 @@ tabla["puesto_afinidad"] = tabla["afinidad"].rank(ascending=False, pct=True)
 
 st.markdown('<p class="eu-seccion">Tus convocatorias</p>', unsafe_allow_html=True)
 f1, f2, f3 = st.columns([3.2, 2.4, 1.6])
-busqueda = f1.text_input("Buscar", placeholder="Puesto, entidad o palabra: «estadística», «Sunafil», «Cusco»…")
+busqueda = f1.text_input("Buscar", placeholder='Puesto, entidad o palabra: "estadística", "Sunafil", "Cusco"…')
 departamentos = f2.multiselect("Departamento", sorted(tabla["departamento"].unique()), placeholder="Todo el Perú")
 sueldo_minimo = f3.number_input("Remuneración mínima (S/)", 0, 20000, 0, step=500)
 
@@ -543,7 +543,7 @@ pestana_verde, pestana_amarilla, pestana_roja = st.tabs([
     f"Te falta un requisito · {miles(len(rojas))}"])
 with pestana_verde:
     mostrar(verdes, "Cumples la carrera, el grado y los años de experiencia que se pudieron medir.",
-            "Ninguna oferta cumple todo lo medible con este perfil. Mira la pestaña «Conviene revisar».")
+            'Ninguna oferta cumple todo lo medible con este perfil. Mira la pestaña "Conviene revisar".')
 with pestana_amarilla:
     mostrar(amarillas, "Nada te descarta, pero hay algo que debes leer tú: carreras afines, colegiatura, "
                        "posgrado o un texto poco claro.", "No hay ofertas por revisar.")

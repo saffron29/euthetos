@@ -14,7 +14,7 @@ profesión) que hayan postulado, o intentado postular, a una convocatoria públi
 1. ¿Qué es lo más difícil de buscar trabajo en el Estado?
 2. Cuéntame la última vez que revisaste una convocatoria: ¿dónde la encontraste y qué hiciste después?
 3. ¿Cómo supiste si cumplías los requisitos? ¿Cuánto tiempo te tomó?
-4. ¿Alguna vez postulaste y quedaste «no apto»? ¿Por qué motivo?
+4. ¿Alguna vez postulaste y quedaste "no apto"? ¿Por qué motivo?
 5. ¿Qué usas hoy para enterarte de las convocatorias (portales, grupos, páginas, avisos de amigos)? ¿Qué no te gusta de eso?
 6. ¿Has pagado alguna vez por algo relacionado (asesoría, cursos, armado de expediente)? ¿Cuánto?
 

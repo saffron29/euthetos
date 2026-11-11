@@ -58,7 +58,7 @@ def grado_del_cv(texto):
 
 
 # ---------------------------------------------------------------------------
-# 3. Periodos de trabajo: se leen de la sección «Experiencia»
+# 3. Periodos de trabajo: se leen de la sección "Experiencia"
 # ---------------------------------------------------------------------------
 MESES = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6, "jul": 7,
          "ago": 8, "set": 9, "sep": 9, "oct": 10, "nov": 11, "dic": 12}
@@ -67,9 +67,9 @@ _NOMBRE = r"(ene|feb|mar|abr|may|jun|jul|ago|set|sep|oct|nov|dic)[a-z]*\.?,?\s*(
 _MES = r"(?:" + _NOMBRE + r"|(\d{1,2})\s*[/.]\s*)?"
 _FECHA = _MES + r"((?:19|20)\d{2})"
 _HOY = r"actualidad|presente|a la fecha|hoy|actual|vigente|current|present"
-# «marzo 2021 – agosto 2023», «03/2021 - 08/2023», «2021 - 2023», «enero 2023 – actualidad»
+# "marzo 2021 – agosto 2023", "03/2021 - 08/2023", "2021 - 2023", "enero 2023 – actualidad"
 PATRON_PERIODO = re.compile(_FECHA + r"\s*(?:-|–|—|\ba\b|\bal\b|\bhasta\b)\s*(?:la\s+)?(?:" + _FECHA + "|(" + _HOY + "))")
-# «junio 2026» suelto: un trabajo de un solo mes
+# "junio 2026" suelto: un trabajo de un solo mes
 PATRON_UN_MES = re.compile(r"\b" + _NOMBRE + r"((?:19|20)\d{2})")
 
 TITULO_EXPERIENCIA = r"^(experiencia|trayectoria|historial laboral|practicas)"
@@ -80,7 +80,7 @@ VINETAS = ("•", "-", "*", "·", "▪", "–", "o ")
 
 
 def seccion_experiencia(texto):
-    """Las líneas del CV que están bajo un título como «Experiencia laboral»."""
+    """Las líneas del CV que están bajo un título como "Experiencia laboral"."""
     lineas, dentro = [], False
     for linea in texto.splitlines():
         limpia = normalizar(linea)
@@ -109,7 +109,7 @@ def _en_palabras(inicio, fin):
 
 
 def periodos_de_trabajo(texto, hoy=None):
-    """Lista de periodos leídos de la sección «Experiencia» del CV.
+    """Lista de periodos leídos de la sección "Experiencia" del CV.
 
     Cada periodo es un diccionario con el inicio y el fin contados en meses,
     su duración y la línea del CV de donde salió, para que la persona lo reconozca.
@@ -129,7 +129,7 @@ def periodos_de_trabajo(texto, hoy=None):
                 fin = int(anio2) * 12 + _mes(mes2, num2, 12)
             elif mes1 or num1:
                 fin = int(anio2) * 12 + 12
-            else:                               # «2021 – 2023»: solo años, se cuentan 2
+            else:                               # "2021 – 2023": solo años, se cuentan 2
                 fin = int(anio2) * 12 if anio2 != anio1 else inicio + 6
             encontrados.append((inicio, fin))
 

@@ -46,7 +46,7 @@ PATRONES_NIVEL = [
     (ESTUDIANTE, r"estudiante|ultimo ciclo|ultimos ciclos|ciclo academico|estudios universitarios"),
     (EGRESADO, r"egresad[oa]"),
     (BACHILLER, r"bachiller"),
-    # Los nombres de profesión («ingeniero», «enfermera», «obstetra») también implican título profesional
+    # Los nombres de profesión ("ingeniero", "enfermera", "obstetra") también implican título profesional
     (TITULO, r"titul[oa]|licenciad[oa]|licenciatura|abogad[oa]|medico|cirujano|contador publico|"
              r"\bingenier[oa]s?\b|\benfermer[oa]s?\b|obstetra|psicolog[oa]s?\b|nutricionista|economista|"
              r"arquitect[oa]s?\b|odontolog[oa]s?\b|biolog[oa]s?\b|veterinari[oa]s?\b|quimico farmaceutic"),
@@ -56,9 +56,9 @@ PATRON_COLEGIATURA = r"colegiad|colegiatura|habilitad|habilitacion"
 
 
 def nivel_exigido(formacion):
-    """Lee el grado mínimo que pide la sección «Formación» de una oferta.
+    """Lee el grado mínimo que pide la sección "Formación" de una oferta.
 
-    Si el texto ofrece alternativas («título técnico o egresado universitario»),
+    Si el texto ofrece alternativas ("título técnico o egresado universitario"),
     vale la más baja. La maestría y la colegiatura se devuelven aparte, porque
     a veces son obligatorias y a veces solo deseables.
     """
@@ -67,7 +67,7 @@ def nivel_exigido(formacion):
     if not texto:
         return resultado
 
-    # «Título técnico» y «egresado de carrera técnica» son nivel técnico, no título profesional
+    # "Título técnico" y "egresado de carrera técnica" son nivel técnico, no título profesional
     solo_tecnico = "tecnic" in texto and "universit" not in texto and "bachiller" not in texto
     sin_titulo_tecnico = re.sub(r"titul[oa]s?( profesional)?( de)? tecnic[oa]s?", "tecnico", texto)
 
@@ -166,9 +166,9 @@ def _a_anios(coincidencia):
 
 
 def experiencia_exigida(experiencia):
-    """Años de experiencia GENERAL y ESPECÍFICA que pide la sección «Experiencia».
+    """Años de experiencia GENERAL y ESPECÍFICA que pide la sección "Experiencia".
 
-    Se toma la primera duración de cada frase: en «6 meses en los últimos 3 años»
+    Se toma la primera duración de cada frase: en "6 meses en los últimos 3 años"
     lo pedido son los 6 meses. Si varias frases hablan de lo mismo, vale la mayor.
     """
     resultado = {"general": None, "especifica": None}
@@ -177,21 +177,21 @@ def experiencia_exigida(experiencia):
         return resultado
 
     texto = texto.replace("esperiencia", "experiencia")          # errata frecuente
-    # Se corta en viñetas, puntos, comas y ";", y antes de «experiencia general/específica»
-    # (salvo en «años de experiencia general», donde el número va delante):
-    # «02 años de experiencia general, 01 año de experiencia específica» son dos frases
+    # Se corta en viñetas, puntos, comas y ";", y antes de "experiencia general/específica"
+    # (salvo en "años de experiencia general", donde el número va delante):
+    # "02 años de experiencia general, 01 año de experiencia específica" son dos frases
     separador = (r"\s*(?:•|;|\||:\s*-|\.\s|,\s|\s-\s|\sy\s+(?=experiencia)|"
                  r"(?<!\sde)\s+(?=experiencia\s+(?:laboral\s+)?(?:general|especifica)))\s*")
     tipo = "general"
     for frase in re.split(separador, texto):
         if "deseable" in frase or not frase:
             continue
-        # Una frase sin la palabra «experiencia» sigue hablando de lo mismo que la anterior
+        # Una frase sin la palabra "experiencia" sigue hablando de lo mismo que la anterior
         if any(s in frase for s in SENALES_ESPECIFICA):
             tipo = "especifica"
         elif "experiencia" in frase:
             tipo = "general"
-        # «29 años de edad» no es experiencia
+        # "29 años de edad" no es experiencia
         validas = [m for m in PATRON_DURACION.finditer(frase)
                    if not frase[m.end(): m.end() + 10].strip().startswith("de edad")]
         if validas:
@@ -199,7 +199,7 @@ def experiencia_exigida(experiencia):
             if anios > 20:
                 continue
         elif any(n in frase for n in NEGACIONES):
-            anios = 0.0                                   # «no requiere experiencia»
+            anios = 0.0                                   # "no requiere experiencia"
         else:
             continue
         if resultado[tipo] is None or anios > resultado[tipo]:
@@ -275,7 +275,7 @@ def veredicto(perfil, oferta, pedido=None):
     elif carrera == "sin_carrera":
         motivos.append(("ok", "No pide una carrera en particular."))
     elif carrera == "afines":
-        motivos.append(("revisar", "No nombra tu carrera, pero admite «carreras afines»: revisa si la tuya lo es."))
+        motivos.append(("revisar", 'No nombra tu carrera, pero admite "carreras afines": revisa si la tuya lo es.'))
     elif carrera == "no":
         motivos.append(("falta", f"La formación pedida no menciona tu carrera ({perfil['carrera']})."))
     else:
@@ -288,7 +288,7 @@ def veredicto(perfil, oferta, pedido=None):
         motivos.append(("revisar", "Es una práctica: suele ser solo para estudiantes o egresados recientes."))
     else:
         estado = "ok" if perfil["nivel"] >= nivel else "falta"
-        motivos.append((estado, f"Pide como mínimo «{NIVELES[nivel]}» y tú indicaste «{NIVELES[perfil['nivel']]}»."))
+        motivos.append((estado, f"Pide como mínimo \"{NIVELES[nivel]}\" y tú indicaste \"{NIVELES[perfil['nivel']]}\"."))
     if pedido["pide_posgrado"] and perfil["nivel"] < MAESTRIA and (nivel or 0) < MAESTRIA:
         motivos.append(("revisar", "Menciona estudios de posgrado: revisa si son obligatorios."))
     if pedido["pide_colegiatura"] and not perfil.get("colegiado"):
