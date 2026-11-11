@@ -159,6 +159,12 @@ texto original.
 **Dirección pública:** https://euthetos.streamlit.app/ (Streamlit Community Cloud). Si la aplicación estuvo
 inactiva, la primera visita tarda alrededor de un minuto en despertarla y en cargar el modelo de lenguaje.
 
+**Video de respaldo:** [docs/video/euthetos_demo.mp4](docs/video/euthetos_demo.mp4) (74 segundos, sin audio, con subtítulos). Muestra el flujo completo con la aplicación real y el currículo ficticio del ingeniero civil:
+el currículo, la carrera, los periodos de trabajo, los resultados, una oferta con su texto literal y el recuadro
+"Qué te acercaría a más ofertas". Se generó de forma automática, con un navegador sin ventana que recorre la
+aplicación y toma capturas continuas; la única edición es un corte de unos segundos mientras la aplicación
+compara el perfil con las ofertas.
+
 **Correrla en una computadora propia:**
 
 ```bash
@@ -263,6 +269,7 @@ autor y con revisiones manuales en cada etapa:
 | `app.py` | Escribió la interfaz y tres rediseños, y propuso mejoras | Pidió una interfaz sin emojis y más profesional, luego con más color (con los tonos de su portafolio), letra más pequeña y un panel fijo; de las mejoras propuestas, aprobó el buscador, los filtros por régimen, el aviso de privacidad, la tabla de competencia y el recuadro "Qué te acercaría a más ofertas" |
 | README | Redactó el borrador y calculó sus cifras | Pidió mejorarlo, cuestionó el precio inicial (de ahí el precio por etapas) y pidió reemplazar los términos en inglés |
 | Conversaciones con usuarios | Escribió la guía de preguntas y su versión corta para WhatsApp, y ordenó las respuestas en notas | Hizo las conversaciones, pasó las respuestas literales y revisó las notas |
+| Video de respaldo | Lo generó automáticamente con un navegador sin ventana que recorre la aplicación real | Lo pidió por no poder grabarlo a mano ese día y aprobó el resultado |
 
 ## 10. Competencia, primeros usuarios, hoja de ruta y riesgos
 
