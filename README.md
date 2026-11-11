@@ -22,7 +22,14 @@ Para probarla sin un currículo propio: [enfermera](https://euthetos.streamlit.a
 | 1. Escribe tu carrera y adjunta tu currículo | 2. Confirma tu experiencia | 3. Revisa tus convocatorias |
 |---|---|---|
 | Cualquier carrera, universitaria o técnica. El currículo puede estar en PDF, Word o texto, y no se guarda. | Euthetos muestra cada periodo de trabajo que leyó del currículo; se desmarcan los que no pueden acreditarse. | Las ofertas se separan en **cumples lo medible**, **conviene revisar** y **te falta un requisito**, con el motivo y el texto literal de cada requisito. |
-| ![Portada](docs/capturas/1_portada.png) | ![Experiencia y resultados](docs/capturas/2_resultados.png) | ![Detalle de una oferta](docs/capturas/3_oferta.png) |
+
+**Resultados para una enfermera ficticia:** sus periodos de trabajo, el resumen de resultados y dónde están sus oportunidades.
+
+![Experiencia y resultados](docs/capturas/2_resultados.png)
+
+**Detalle de una oferta:** el motivo de cada requisito y, desplegado, el texto literal publicado por la entidad.
+
+![Detalle de una oferta](docs/capturas/3_oferta.png)
 
 ---
 
@@ -162,7 +169,7 @@ flowchart LR
     CSV --> REG["reglas.py<br/>carrera, grado y experiencia"]
     REG --> APP
     VEC --> APP
-    APP --> R["Tres grupos de ofertas<br/>con motivos, texto literal y descarga"]
+    APP --> R["Resultados<br/>en tres grupos"]
 ```
 
 ### Modelos y fuentes, y por qué
