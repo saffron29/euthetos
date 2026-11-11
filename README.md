@@ -159,7 +159,7 @@ texto original.
 **Dirección pública:** https://euthetos.streamlit.app/ (Streamlit Community Cloud). Si la aplicación estuvo
 inactiva, la primera visita tarda alrededor de un minuto en despertarla y en cargar el modelo de lenguaje.
 
-**Video de respaldo:** [docs/video/euthetos_demo.mp4](docs/video/euthetos_demo.mp4) (74 segundos, sin audio, con subtítulos). Muestra el flujo completo con la aplicación real y el currículo ficticio del ingeniero civil:
+**Video de respaldo:** [verlo en el navegador](https://cdn.jsdelivr.net/gh/saffron29/euthetos@de93abd365bf6205ff950caa9dc06d1498e1285f/docs/video/euthetos_demo.mp4) o descargar el archivo [docs/video/euthetos_demo.mp4](docs/video/euthetos_demo.mp4) (74 segundos, sin audio, con subtítulos). Muestra el flujo completo con la aplicación real y el currículo ficticio del ingeniero civil:
 el currículo, la carrera, los periodos de trabajo, los resultados, una oferta con su texto literal y el recuadro
 "Qué te acercaría a más ofertas". Se generó de forma automática, con un navegador sin ventana que recorre la
 aplicación y toma capturas continuas; la única edición es un corte de unos segundos mientras la aplicación
