@@ -101,15 +101,15 @@ exigida es de dos años, y solo el 33% de las ofertas pide un año o menos.
 Las notas completas, con sus respuestas literales, se encuentran en [`docs/research/`](docs/research/), junto con
 la guía de preguntas utilizada.
 
-| Conversación | Perfil | Qué dijo |
+| Conversación | Perfil | Resumen |
 |---|---|---|
-| [1](docs/research/conversacion_1.md) | Sociología; hoy trabaja sobre todo en ONG; revisó una convocatoria hace un año | Revisaba las bases de cada convocatoria («me tardaba algunos minutos en leer») y quedó «no apto» «muchas veces cuando inicié». Se entera por contactos y por convocatoriasdetrabajo.com. Sobre Euthetos: «Se ve útil, pero qué más podría hacer. Hay otras páginas que hacen eso. No sé si pagaría, pero creo que instituciones grandes sí lo harían» |
-| [2](docs/research/conversacion_2.md) | Derecho; revisó convocatorias una semana antes | «Tuve que leer los documentos y las bases para cada convocatoria, era un montón»; «intentaba no perder el tiempo en convocatorias que no fueran de mi perfil». Se entera porque «me pasan la voz» o por la web de SERVIR. Sobre Euthetos: «Creo que ahorraría mucho tiempo a los que lo usen, pero podría mejorarse con más cosas» |
-| [3](docs/research/conversacion_3.md) | Psicología; se ha dedicado sobre todo al sector privado | «Tenía que leer las bases para saber si era buena idea postular», justamente para no quedar «no apto». Usaba portaltrabajos.pe. Sobre Euthetos: «Creo que tiene potencial, pero hay que meterle más cosas» |
+| [1](docs/research/conversacion_1.md) | Sociología; hoy trabaja sobre todo en ONG; revisó una convocatoria hace un año | Leía las bases de cada convocatoria, lo que le tomaba algunos minutos por aviso, y al inicio de su carrera quedó «no apto» muchas veces. Se enteraba por contactos y por una página que reúne convocatorias. La herramienta le pareció útil, aunque señaló que otras páginas ya lo hacen; no sabe si pagaría, pero cree que las instituciones grandes sí lo harían |
+| [2](docs/research/conversacion_2.md) | Derecho; revisó convocatorias una semana antes | Leía los documentos y las bases de cada convocatoria, lo que describió como mucho trabajo, y trataba de no perder tiempo en las que no eran de su perfil. Se entera por avisos de conocidos y por la web de SERVIR. Cree que la herramienta ahorraría mucho tiempo, pero que podría mejorarse con más funciones |
+| [3](docs/research/conversacion_3.md) | Psicología; se ha dedicado sobre todo al sector privado | Leía las bases para decidir si convenía postular y, así, evitar quedar «no apto». Usaba una página que reúne convocatorias. Cree que la herramienta tiene potencial, pero que necesita más funciones |
 
 De estas conversaciones se desprenden cuatro hallazgos. En primer lugar, las tres personas resolvían el problema
-de la misma manera: leyendo las bases de cada convocatoria, una por una, lo cual una de ellas describió como «un
-montón». En segundo lugar, quedar «no apto» fue frecuente al inicio de la carrera, mientras que las otras dos
+de la misma manera: leyendo las bases de cada convocatoria, una por una, lo cual una de ellas describió como mucho
+trabajo. En segundo lugar, quedar «no apto» fue frecuente al inicio de la carrera, mientras que las otras dos
 personas leían las bases precisamente para evitarlo; es decir, el costo principal es el tiempo de lectura. En
 tercer lugar, solo una persona busca en la web de SERVIR: las demás se enteran por sus contactos o por páginas que
 reúnen convocatorias, que se comparan en la [sección 10](#10-competencia-primeros-usuarios-hoja-de-ruta-y-riesgos).
@@ -215,8 +215,8 @@ universidades e institutos, colegios profesionales y oficinas de empleo municipa
 | **Versión 0.2** | Actualización diaria automática y alertas por correo de ofertas nuevas que encajan | **S/ 9.90 al mes** por persona |
 | **Versión 1.0** | Panel institucional con los perfiles de sus egresados o agremiados, alertas para todos y un informe de los requisitos que más les faltan | **S/ 300 al mes** por institución, hasta 1,000 personas |
 
-**Lo que dijeron las conversaciones.** Ninguna de las tres personas dijo que pagaría por las alertas, y una opinó:
-«No sé si pagaría, pero creo que instituciones grandes sí lo harían». Por eso, el precio por persona de la versión
+**Lo que dijeron las conversaciones.** Ninguna de las tres personas dijo que pagaría por las alertas, y una opinó
+que las instituciones grandes sí lo harían. Por eso, el precio por persona de la versión
 0.2 se mantiene como una hipótesis que debe comprobarse durante el piloto, mientras que el ingreso principal se
 espera de las instituciones.
 
