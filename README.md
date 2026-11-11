@@ -15,7 +15,7 @@ Para probarla sin un currículo propio: [enfermera](https://euthetos.streamlit.a
 
 | 3,938 | 351 | S/ 0 |
 |:---:|:---:|:---:|
-| ofertas laborales vigentes del Estado, de todos los regímenes | entidades públicas en los 25 departamentos | de costo por consulta: el modelo de lenguaje es abierto y corre dentro de la aplicación |
+| ofertas laborales vigentes del Estado al 10/11/2026, de todos los regímenes (la aplicación muestra solo las que siguen abiertas) | entidades públicas en los 25 departamentos | de costo por consulta: el modelo de lenguaje es abierto y corre dentro de la aplicación |
 
 ![Portada de Euthetos](docs/capturas/1_portada.png)
 
