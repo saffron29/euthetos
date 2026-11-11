@@ -98,6 +98,9 @@ st.markdown("""
 .stTabs [data-testid="stTab"][aria-selected="true"] {background: #13284A; border-color: #13284A;}
 .stTabs [data-testid="stTab"][aria-selected="true"] p {color: #FFFFFF;}
 
+/* Píldoras de régimen */
+[data-testid="stButtonGroup"] button {border-radius: 999px !important;}
+
 /* Cargador de archivos en español (el texto original de Streamlit está en inglés) */
 [data-testid="stFileUploaderDropzone"] button [data-testid="stMarkdownContainer"] p {font-size: 0;}
 [data-testid="stFileUploaderDropzone"] button [data-testid="stMarkdownContainer"] p::after {
@@ -147,6 +150,14 @@ st.markdown("""
 /* Barra lateral */
 .eu-lateral {font-family: "Montserrat"; font-weight: 700; font-size: 1.1rem !important; color: #FFFFFF; margin: 0;}
 .eu-lateral-nota {font-size: .78rem !important; color: #A9C6EE; margin: .15rem 0 .9rem; line-height: 1.45;}
+
+/* Avisos de privacidad */
+.eu-privacidad {background: rgba(233,180,76,.12); border: 1px solid rgba(233,180,76,.45); border-radius: 10px;
+                padding: .6rem .75rem; font-size: .76rem; line-height: 1.45; color: #DBE5F3; margin: -.4rem 0 .9rem;}
+.eu-privacidad b {color: #E9B44C;}
+.eu-aviso {background: #FFFFFF; border: 1px solid #D5DEEA; border-left: 4px solid #E9B44C; border-radius: 10px;
+           padding: .8rem 1rem; font-size: .84rem; line-height: 1.5; color: #36404F; margin: 0 0 1rem;}
+.eu-aviso b {color: #13284A;}
 
 /* Pie */
 .eu-pie {background: #13284A; color: #C9D6EA; border-radius: 14px; padding: 1.1rem 1.4rem; margin-top: 2rem;
@@ -215,6 +226,8 @@ def cargar_ofertas(hoy):
     df["departamento"] = df["ubicacion"].fillna("Sin dato").str.split(" - ").str[0].str.title()
     df["remuneracion_soles"] = pd.to_numeric(df["remuneracion_soles"], errors="coerce")
     df["dias"] = (pd.to_datetime(df["fecha_fin"]) - pd.Timestamp(hoy)).dt.days
+    campos = ["titulo", "institucion", "ubicacion", "formacion", "experiencia", "especializacion", "conocimientos"]
+    df["texto_busqueda"] = df[campos].fillna("").agg(" ".join, axis=1).map(reglas.normalizar)
     return df
 
 
@@ -270,10 +283,13 @@ if demo and "ejemplo" not in st.session_state:
 
 with st.sidebar:
     st.markdown('<p class="eu-eyebrow">Paso 1 y 2</p><p class="eu-lateral">Tu perfil</p>'
-                '<p class="eu-lateral-nota">Tu currículo se lee en el momento y no se guarda.</p>',
+                '<p class="eu-lateral-nota">Escribe tu carrera y adjunta tu currículo.</p>',
                 unsafe_allow_html=True)
     zona_carrera = st.container()
     archivo = st.file_uploader("Currículo (PDF, Word o texto)", type=["pdf", "docx", "txt"])
+    st.markdown('<div class="eu-privacidad"><b>Tu currículo es privado.</b> Se lee en memoria mientras usas la '
+                'página y no se guarda ni se envía a ningún servicio externo: el modelo de lenguaje corre dentro '
+                'de Euthetos.</div>', unsafe_allow_html=True)
     ejemplo = st.selectbox("O prueba con un currículo ficticio", [SIN_EJEMPLO] + list(CV_DE_EJEMPLO), key="ejemplo")
     zona_confirmar = st.container()
 
@@ -334,6 +350,9 @@ if not carrera.strip():
   <div class="eu-paso" style="--c:#1E8A5A"><span class="eu-num">3</span><b>Revisa tus convocatorias</b>
     <span>Cada oferta indica si cumples lo que pide, qué te falta y cuándo cierra.</span></div>
 </div>
+<div class="eu-aviso"><b>Privacidad.</b> Tu currículo se lee en memoria y no se guarda ni se envía a ningún servicio
+externo, porque el modelo de lenguaje corre dentro de Euthetos. Los datos de las ofertas son públicos y vienen de
+Talento Perú. Euthetos es informativo: quien decide si eres apto es el comité de selección de cada entidad.</div>
 <p class="eu-nota"><i>Euthetos</i> (εὔθετος) significa «apto» en griego antiguo. ¿No tienes tu currículo a la mano?
 Elige uno ficticio en el panel de la izquierda.</p>""", unsafe_allow_html=True)
     st.stop()
@@ -387,14 +406,20 @@ tabla["afinidad"] = 0.0 if afinidad is None else afinidad
 tabla["puesto_afinidad"] = tabla["afinidad"].rank(ascending=False, pct=True)
 
 st.markdown('<p class="eu-seccion">Tus convocatorias</p>', unsafe_allow_html=True)
-f1, f2, f3 = st.columns([3, 2, 3])
-departamentos = f1.multiselect("Departamento", sorted(tabla["departamento"].unique()), placeholder="Todo el Perú")
-sueldo_minimo = f2.number_input("Remuneración mínima (S/)", 0, 20000, 0, step=500)
-with f3:
-    solo_afines = st.toggle("Solo las más parecidas a mi currículo", value=False,
-                            help="Muestra únicamente el 20% de ofertas con mayor parecido.")
-    sin_carrera = st.toggle("Incluir puestos que no piden carrera", value=perfil["nivel"] <= reglas.TECNICO,
-                            help="Por ejemplo, los que solo piden secundaria completa.")
+f1, f2, f3 = st.columns([3.2, 2.4, 1.6])
+busqueda = f1.text_input("Buscar", placeholder="Puesto, entidad o palabra: «estadística», «Sunafil», «Cusco»…")
+departamentos = f2.multiselect("Departamento", sorted(tabla["departamento"].unique()), placeholder="Todo el Perú")
+sueldo_minimo = f3.number_input("Remuneración mínima (S/)", 0, 20000, 0, step=500)
+
+# El conteo de cada régimen es el de todas las ofertas vigentes: no cambia al mover otros filtros
+por_regimen = tabla["regimen"].value_counts()
+regimenes = st.pills("Régimen laboral", list(por_regimen.index), selection_mode="multi",
+                     format_func=lambda r: f"{r} · {miles(int(por_regimen[r]))}", key="regimenes")
+t1, t2 = st.columns(2)
+solo_afines = t1.toggle("Solo las más parecidas a mi currículo", value=False,
+                        help="Muestra únicamente el 20% de ofertas con mayor parecido.")
+sin_carrera = t2.toggle("Incluir puestos que no piden carrera", value=perfil["nivel"] <= reglas.TECNICO,
+                        help="Por ejemplo, los que solo piden secundaria completa.")
 
 vista = tabla
 if not sin_carrera:
@@ -405,6 +430,12 @@ if sueldo_minimo:
     vista = vista[vista["remuneracion_soles"] >= sueldo_minimo]
 if solo_afines:
     vista = vista[vista["puesto_afinidad"] <= 0.20]
+if regimenes:
+    vista = vista[vista["regimen"].isin(regimenes)]
+if busqueda.strip():
+    # Cada palabra buscada debe aparecer en el puesto, la entidad, el lugar o los requisitos (sin tildes)
+    for palabra in reglas.normalizar(busqueda).split():
+        vista = vista[vista["texto_busqueda"].str.contains(palabra, regex=False)]
 
 verdes, amarillas, rojas = (vista[vista["color"] == c] for c in ("verde", "amarillo", "rojo"))
 posibles = pd.concat([verdes, amarillas])
