@@ -97,15 +97,26 @@ Es decir, una persona que revisa las ofertas a mano lee entre 5 y 179 avisos por
 recién empieza su carrera puede leerlos todos sin encontrar ninguno. Asimismo, la mediana de experiencia general
 exigida es de dos años, y solo el 33% de las ofertas pide un año o menos.
 
-**Cómo lo resuelve hoy.** Las notas de las conversaciones con usuarios potenciales se encuentran en
-[`docs/research/`](docs/research/), junto con la guía de preguntas utilizada.
+**Cómo lo resuelve hoy.** Para saberlo, se conversó por WhatsApp con tres profesionales de carreras distintas.
+Las notas completas, con sus respuestas literales, se encuentran en [`docs/research/`](docs/research/), junto con
+la guía de preguntas utilizada.
 
-<!-- Tabla de conversaciones: se completa con las notas de docs/research/conversacion_1..3.md -->
 | Conversación | Perfil | Qué dijo |
 |---|---|---|
-| 1 | *en curso* | *pendiente* |
-| 2 | *en curso* | *pendiente* |
-| 3 | *en curso* | *pendiente* |
+| [1](docs/research/conversacion_1.md) | Sociología; hoy trabaja sobre todo en ONG; revisó una convocatoria hace un año | Revisaba las bases de cada convocatoria («me tardaba algunos minutos en leer») y quedó «no apto» «muchas veces cuando inicié». Se entera por contactos y por convocatoriasdetrabajo.com. Sobre Euthetos: «Se ve útil, pero qué más podría hacer. Hay otras páginas que hacen eso. No sé si pagaría, pero creo que instituciones grandes sí lo harían» |
+| [2](docs/research/conversacion_2.md) | Derecho; revisó convocatorias una semana antes | «Tuve que leer los documentos y las bases para cada convocatoria, era un montón»; «intentaba no perder el tiempo en convocatorias que no fueran de mi perfil». Se entera porque «me pasan la voz» o por la web de SERVIR. Sobre Euthetos: «Creo que ahorraría mucho tiempo a los que lo usen, pero podría mejorarse con más cosas» |
+| [3](docs/research/conversacion_3.md) | Psicología; se ha dedicado sobre todo al sector privado | «Tenía que leer las bases para saber si era buena idea postular», justamente para no quedar «no apto». Usaba portaltrabajos.pe. Sobre Euthetos: «Creo que tiene potencial, pero hay que meterle más cosas» |
+
+De estas conversaciones se desprenden cuatro hallazgos. En primer lugar, las tres personas resolvían el problema
+de la misma manera: leyendo las bases de cada convocatoria, una por una, lo cual una de ellas describió como «un
+montón». En segundo lugar, quedar «no apto» fue frecuente al inicio de la carrera, mientras que las otras dos
+personas leían las bases precisamente para evitarlo; es decir, el costo principal es el tiempo de lectura. En
+tercer lugar, solo una persona busca en la web de SERVIR: las demás se enteran por sus contactos o por páginas que
+reúnen convocatorias, que se comparan en la [sección 10](#10-competencia-primeros-usuarios-hoja-de-ruta-y-riesgos).
+Por último, las tres valoraron la herramienta, pero coincidieron en que le faltan funciones, sin precisar cuáles, y
+ninguna dijo que pagaría por las alertas; una opinó que sí pagarían las instituciones grandes. Cabe precisar que se
+trata de tres respuestas breves por mensaje, de modo que son indicios y no una medición (además, al provenir de
+contactos del autor, pueden ser más favorables que las de un desconocido).
 
 ## 4. Solución e idea clave (*insight*)
 
@@ -204,6 +215,11 @@ universidades e institutos, colegios profesionales y oficinas de empleo municipa
 | **Versión 0.2** | Actualización diaria automática y alertas por correo de ofertas nuevas que encajan | **S/ 9.90 al mes** por persona |
 | **Versión 1.0** | Panel institucional con los perfiles de sus egresados o agremiados, alertas para todos y un informe de los requisitos que más les faltan | **S/ 300 al mes** por institución, hasta 1,000 personas |
 
+**Lo que dijeron las conversaciones.** Ninguna de las tres personas dijo que pagaría por las alertas, y una opinó:
+«No sé si pagaría, pero creo que instituciones grandes sí lo harían». Por eso, el precio por persona de la versión
+0.2 se mantiene como una hipótesis que debe comprobarse durante el piloto, mientras que el ingreso principal se
+espera de las instituciones.
+
 **Costo por usuario.**
 
 | Concepto | Costo |
@@ -241,7 +257,7 @@ autor y con revisiones manuales en cada etapa:
 | `emparejar.py` | Llevó la búsqueda por significado de la Sesión 08 a las ofertas | — |
 | `app.py` | Escribió la interfaz y tres rediseños; revisó los otros proyectos del issue y propuso ideas | Pidió una interfaz sin emojis y más profesional, luego con más color (inspirada en los portafolios del curso), letra más pequeña y un panel fijo; de las ideas tomadas de otros proyectos, aprobó el buscador, los filtros por régimen, el aviso de privacidad y la tabla de competencia |
 | README | Redactó el borrador y calculó sus cifras | Pidió mejorarlo, cuestionó el precio inicial (de ahí el precio por etapas) y pidió reemplazar los términos en inglés |
-| Conversaciones con usuarios | Escribió la guía de preguntas | Hizo las conversaciones |
+| Conversaciones con usuarios | Escribió la guía de preguntas y su versión corta para WhatsApp, y ordenó las respuestas en notas | Hizo las conversaciones, pasó las respuestas literales y revisó las notas |
 
 ## 10. Competencia, primeros usuarios, hoja de ruta y riesgos
 
@@ -252,7 +268,7 @@ actuales dejan abierta: *¿puedo postular?*
 |---|---|---|
 | Revisar las ofertas a mano | Control total sobre lo que se lee | Hay que abrir y leer cada detalle: entre 5 y 179 avisos por cada uno que sirve, según el perfil |
 | Buscador de Talento Perú | Todas las ofertas del Estado, en el portal oficial | Encuentra la frase literal que se escribe en el perfil, diez ofertas por página, y no dice si se cumplen los requisitos |
-| Portales que reúnen convocatorias (convocatoriasdetrabajo.com, yaempleo.net) | Ofertas de varias fuentes y enlaces a las bases | La búsqueda es por palabras o por entidad; la verificación de los requisitos queda a cargo de la persona |
+| Portales que reúnen convocatorias (convocatoriasdetrabajo.com, portaltrabajos.pe, yaempleo.net) | Ofertas de varias fuentes, agrupadas por departamento, entidad o tema, y enlaces a las bases. Dos de las tres personas consultadas usaban una de estas páginas | La búsqueda es por palabras o por categoría; la verificación de los requisitos queda a cargo de la persona |
 | Bolsas de trabajo privadas (Bumeran, Computrabajo) | Buscadores con filtros y alertas | Se centran en el sector privado y tampoco comparan el currículo con los requisitos |
 | **Euthetos** | **Todas las ofertas vigentes de Talento Perú, comparadas con el perfil de la persona** | Aún no lee las bases en PDF ni sabe qué carreras son afines (ver la hoja de ruta) |
 

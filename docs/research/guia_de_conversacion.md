@@ -34,3 +34,27 @@ Recién al final se muestra Euthetos y se pregunta:
 
 Cada conversación se guarda en esta carpeta como `conversacion_1.md`, `conversacion_2.md` y
 `conversacion_3.md`.
+
+## Versión enviada por WhatsApp
+
+Por falta de tiempo, las tres conversaciones se hicieron por WhatsApp el 10 de noviembre de 2026, con una versión
+de cinco preguntas que reúne las preguntas 2 a 5, 7 y 8 de esta guía y que, en lugar de la pregunta 6, pregunta si
+se pagaría por recibir alertas. Se dejó de lado la pregunta 1. El mensaje enviado fue el siguiente:
+
+> Hola, [nombre]. Estoy terminando el proyecto final de mi diplomatura: una herramienta que te dice a qué
+> convocatorias del Estado puedes postular. ¿Me ayudas con 5 preguntas cortas? Puedes responder por escrito o con
+> audios. Usaré tus respuestas sin tu nombre y solo para el proyecto.
+>
+> 1. ¿Qué carrera estudiaste y cuándo fue la última vez que revisaste una convocatoria del Estado? ¿Dónde la
+>    encontraste?
+> 2. ¿Cómo supiste si cumplías los requisitos? ¿Cuánto tiempo te tomó?
+> 3. ¿Alguna vez quedaste "no apto" o te diste cuenta tarde de que no cumplías algo? ¿Qué fue?
+> 4. ¿Qué usas para enterarte de las convocatorias (Talento Perú, páginas, grupos, amigos)? ¿Qué es lo que menos
+>    te gusta de eso?
+> 5. Prueba esto con tu CV (no se guarda): https://euthetos.streamlit.app/ ¿Qué entendiste primero, qué te
+>    confundió y la usarías la próxima vez? ¿Pagarías algo por recibir alertas de ofertas que encajen contigo?
+>
+> ¡Muchas gracias!
+
+Como las respuestas llegaron por mensaje y fueron breves, varias preguntas quedaron sin respuesta (por ejemplo,
+qué confundió al probar la herramienta); en las notas se indica qué quedó abierto en cada caso.
