@@ -21,7 +21,7 @@ Para probarla sin un currículo propio: [enfermera](https://euthetos.streamlit.a
 
 | 1. Escribe tu carrera y adjunta tu currículo | 2. Confirma tu experiencia | 3. Revisa tus convocatorias |
 |---|---|---|
-| Cualquier carrera, universitaria o técnica. El currículo puede estar en PDF, Word o texto, y no se guarda. | Euthetos muestra cada periodo de trabajo que leyó del currículo; se desmarcan los que no pueden acreditarse. | Las ofertas se separan en **cumples lo medible**, **conviene revisar** y **te falta un requisito**, con el motivo y el texto literal de cada requisito. |
+| Cualquier carrera, universitaria o técnica. El currículo puede estar en PDF, Word o texto, y no se guarda. | Euthetos muestra cada periodo de trabajo que leyó del currículo; se desmarcan los que no pueden acreditarse. | Las ofertas se separan en **cumples lo medible**, **conviene revisar** y **te falta un requisito**, con el motivo y el texto literal de cada requisito. Se pueden filtrar por palabra, departamento, régimen laboral y sueldo. |
 
 **Resultados para una enfermera ficticia:** sus periodos de trabajo, el resumen de resultados y dónde están sus oportunidades.
 
@@ -57,6 +57,8 @@ requisitos de **todas las ofertas vigentes de Talento Perú**, desde el régimen
 
 ## 2. Fundador (*founder*)
 
+<img src="docs/img/fundador.jpg" alt="Frank Pinares Gutiérrez" width="140" align="left" style="margin-right:16px">
+
 Frank Pinares Gutiérrez es licenciado en Ciencia Política y Gobierno por la Pontificia Universidad Católica del
 Perú (2026) y cursa la Diplomatura de Especialización en Ciencia de Datos para las Ciencias Sociales y la Gestión
 Pública (Q-Lab PUCP).
@@ -66,6 +68,8 @@ problema: revisar convocatoria por convocatoria si se cumplen los requisitos, pa
 final de la lectura, que alguno no se cumple. Antes de Euthetos, el autor ya había construido para su propia
 búsqueda un buscador diario de convocatorias y un preparador de postulaciones, y de ellos proviene la experiencia
 con el portal de Talento Perú en la que se apoya el presente proyecto.
+
+<br clear="left">
 
 ## 3. Problema
 
@@ -114,7 +118,8 @@ compara cada oferta vigente y la ubica en uno de tres grupos:
   colegiatura, posgrado o un texto poco claro).
 - **Te falta un requisito:** sirve para saber qué separa a la persona de cada puesto.
 
-Dentro de cada grupo, primero aparecen las ofertas que nombran la carrera y luego las más parecidas al currículo.
+Dentro de cada grupo, primero aparecen las ofertas que nombran la carrera y luego las más parecidas al currículo, y
+la lista puede acotarse con un buscador de palabras y con filtros por departamento, régimen laboral y sueldo mínimo.
 Cada oferta muestra por qué quedó en su grupo, el texto literal publicado por la entidad y el enlace a sus bases.
 
 **Idea clave.** Talento Perú ya publica los requisitos separados en secciones, de manera que lo medible puede leerse
@@ -234,16 +239,22 @@ autor y con revisiones manuales en cada etapa:
 | `reglas.py` y pruebas | Escribió las reglas y 17 pruebas con textos reales | Revisó los resultados en la aplicación |
 | `cv.py` | Escribió la lectura del currículo | Detectó que sumaba periodos no acreditables; de ahí salió la tabla de periodos que la persona confirma |
 | `emparejar.py` | Llevó la búsqueda por significado de la Sesión 08 a las ofertas | — |
-| `app.py` | Escribió la interfaz y tres rediseños | Pidió una interfaz sin emojis y más profesional, luego con más color (inspirada en los portafolios del curso), letra más pequeña y un panel fijo |
+| `app.py` | Escribió la interfaz y tres rediseños; revisó los otros proyectos del issue y propuso ideas | Pidió una interfaz sin emojis y más profesional, luego con más color (inspirada en los portafolios del curso), letra más pequeña y un panel fijo; de las ideas tomadas de otros proyectos, aprobó el buscador, los filtros por régimen, el aviso de privacidad y la tabla de competencia |
 | README | Redactó el borrador y calculó sus cifras | Pidió mejorarlo, cuestionó el precio inicial (de ahí el precio por etapas) y pidió reemplazar los términos en inglés |
 | Conversaciones con usuarios | Escribió la guía de preguntas | Hizo las conversaciones |
 
 ## 10. Competencia, primeros usuarios, hoja de ruta y riesgos
 
-**Competencia.** Las ofertas del Estado se buscan hoy en el propio Talento Perú y en portales que las reúnen, como
-convocatoriasdetrabajo.com o yaempleo.net. En los portales revisados para este proyecto, la búsqueda es por
-palabras o por entidad, y la verificación de los requisitos queda siempre a cargo de la persona. Euthetos no
-compite por tener más ofertas, sino por responder la pregunta que esos portales dejan abierta: *¿puedo postular?*
+**Competencia.** Euthetos no compite por tener más ofertas, sino por responder la pregunta que las alternativas
+actuales dejan abierta: *¿puedo postular?*
+
+| Alternativa | Qué ofrece | Por qué no basta |
+|---|---|---|
+| Revisar las ofertas a mano | Control total sobre lo que se lee | Hay que abrir y leer cada detalle: entre 5 y 179 avisos por cada uno que sirve, según el perfil |
+| Buscador de Talento Perú | Todas las ofertas del Estado, en el portal oficial | Encuentra la frase literal que se escribe en el perfil, diez ofertas por página, y no dice si se cumplen los requisitos |
+| Portales que reúnen convocatorias (convocatoriasdetrabajo.com, yaempleo.net) | Ofertas de varias fuentes y enlaces a las bases | La búsqueda es por palabras o por entidad; la verificación de los requisitos queda a cargo de la persona |
+| Bolsas de trabajo privadas (Bumeran, Computrabajo) | Buscadores con filtros y alertas | Se centran en el sector privado y tampoco comparan el currículo con los requisitos |
+| **Euthetos** | **Todas las ofertas vigentes de Talento Perú, comparadas con el perfil de la persona** | Aún no lee las bases en PDF ni sabe qué carreras son afines (ver la hoja de ruta) |
 
 **Primeros usuarios.** Compañeros de la diplomatura y de la facultad que buscan empleo público, grupos de egresados
 y una oficina de empleabilidad universitaria para el piloto gratuito.
